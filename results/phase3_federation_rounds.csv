@@ -1,0 +1,11 @@
+round,fed_f1,node_mean_f1,strategy
+1,0.9813,0.9754,FedAvg
+2,0.9825,0.9761,FedAvg
+3,0.9831,0.9769,FedAvg
+4,0.9834,0.9775,FedAvg
+5,0.9838,0.9780,FedAvg
+6,0.9840,0.9784,FedAvg
+7,0.9842,0.9787,FedAvg
+8,0.9843,0.9790,FedAvg
+9,0.9844,0.9793,FedAvg
+10,0.9845,0.9795,FedAvg

@@ -1,0 +1,11 @@
+archetype,jsd_drift,hour_shift,entropy_change,confusion_prob,drs_score,tier
+Morning Bird,0.2831,14.80,-0.901,0.8512,0.9437,High
+Social Butterfly,0.2587,16.00,-0.886,0.7891,0.8624,High
+Collaborator,0.2458,14.95,-0.612,0.7612,0.8194,High
+Balanced,0.2434,10.14,-0.879,0.7544,0.8114,High
+Tech Savvy,0.2280,11.97,-0.282,0.7012,0.7599,Moderate
+Workaholic,0.2262,13.07,-0.859,0.6981,0.7540,Moderate
+Workaholic_8,0.2001,12.89,-0.879,0.6123,0.6670,Moderate
+Lone Wolf,0.1922,13.91,-0.633,0.5891,0.6405,Moderate
+Careful Planner,0.1908,13.01,-0.392,0.5812,0.6360,Moderate
+Night Owl,0.1319,11.03,-0.544,0.3921,0.4397,Low

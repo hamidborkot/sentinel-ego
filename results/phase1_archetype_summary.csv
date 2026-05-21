@@ -1,0 +1,11 @@
+archetype_id,archetype,mean_hour,emails_per_day,weekend_ratio,mean_recipients,entropy_hour,entropy_dow,chain_states,training_emails
+0,Morning Bird,5.87,6.84,0.007,2.09,2.41,1.89,1899,27560
+1,Collaborator,6.59,5.86,0.031,3.20,2.55,1.94,2156,18940
+2,Balanced,7.43,4.55,0.014,2.14,2.67,1.96,2679,21568
+3,Workaholic,7.50,5.10,0.153,2.27,2.48,1.81,1744,14320
+4,Night Owl,12.14,4.92,0.012,1.95,2.59,1.93,1512,12180
+5,Tech Savvy,5.89,23.30,0.015,1.94,2.38,1.87,823,20219
+6,Careful Planner,9.94,4.82,0.008,2.26,2.62,1.95,1876,15640
+7,Lone Wolf,8.71,4.52,0.039,1.59,2.44,1.90,1423,11280
+8,Workaholic_8,10.22,8.48,0.092,2.66,2.71,1.88,1654,16890
+9,Social Butterfly,6.85,9.47,0.037,8.04,2.53,1.92,961,7540

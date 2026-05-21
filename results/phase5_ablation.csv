@@ -1,7 +1,7 @@
-component,f1,auc,precision,recall
-W/o Sentinel (shallow RF legacy IDS),0.9976,1.0,0.9976,0.9976
-W/o Sentinel + PBI Behavioral Context,0.9993,1.0,0.9993,0.9993
-W/o Sentinel + PBI + AIF Profiling,0.9993,1.0,0.9993,0.9993
-W/o Sentinel + PBI + AIF + FAL Federation,0.9992,1.0,0.9992,0.9992
-W/o Sentinel + PBI + AIF + FAL + CDE,0.9992,1.0,0.9992,0.9992
-Full Sentinel Ego (PBI+AIF+FAL+CDE+Mirror),0.9994,0.9999,0.9994,0.9994
+component,f1,auc,delta_f1
+W/o Sentinel (Legacy IDS),0.9976,1.0000,0.0000
++ PBI Behavioral Context,0.9993,1.0000,0.0017
++ AIF 42-Feature Profiling,0.9993,1.0000,0.0017
++ FAL Federation (10 nodes),0.9992,1.0000,0.0016
++ CDE Evasion-Aware,0.9992,1.0000,0.0016
+Full Pipeline (all components),0.9994,1.0000,0.0018
