@@ -1,0 +1,3 @@
+sigma,alpha,clipping_C,n_rounds,n_nodes,rdp_per_round,rdp_total,epsilon,delta,privacy_level
+0.5,10,1.0,10,10,0.2,2.0,1.2832,1e-05,Moderate
+1.0,10,1.0,10,10,0.05,0.5,1.2802,1e-05,Moderate-Strong

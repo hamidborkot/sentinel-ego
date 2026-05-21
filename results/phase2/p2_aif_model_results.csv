@@ -1,0 +1,13 @@
+dataset,model,f1_weighted,auc_roc
+KDDCup99-SF,RandomForest,0.9989,0.9999
+KDDCup99-SF,XGBoost,0.9990,0.9999
+KDDCup99-SF,LightGBM,0.9992,1.0000
+KDDCup99-SF,MLP,0.9971,0.9998
+NSL-KDD,RandomForest,0.9841,0.9988
+NSL-KDD,XGBoost,0.9847,0.9991
+NSL-KDD,LightGBM,0.9854,0.9993
+NSL-KDD,MLP,0.9538,0.9733
+NetIntrusion,RandomForest,0.9579,0.9882
+NetIntrusion,XGBoost,0.9561,0.9871
+NetIntrusion,LightGBM,0.9579,0.9886
+NetIntrusion,MLP,0.9423,0.9756
