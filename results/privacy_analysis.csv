@@ -1,0 +1,3 @@
+sigma,clipping_norm_C,epsilon,delta,rdp_alpha,rounds,ego_nodes,privacy_strength
+0.5,1.0,1.2832,1e-05,10,10,10,Moderate
+1.0,1.0,1.2802,1e-05,10,10,10,Moderate-Strong

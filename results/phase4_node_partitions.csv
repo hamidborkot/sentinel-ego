@@ -1,0 +1,11 @@
+node,archetype,total_samples,attack_samples,normal_samples
+0,Balanced,88772,47164,41608
+1,Careful Planner,89444,38589,50855
+2,Collaborator,88772,47164,41608
+3,Lone Wolf,89444,38589,50855
+4,Morning Bird,88772,47164,41608
+5,Night Owl,89444,38589,50855
+6,Social Butterfly,88772,47164,41608
+7,Tech Savvy,89444,38589,50855
+8,Workaholic,88772,47164,41608
+9,Workaholic (8),89444,38589,50855

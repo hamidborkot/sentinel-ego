@@ -1,0 +1,10 @@
+dataset,model,f1_mean,f1_std,auc_mean,auc_std
+NSL-KDD,RandomForest,0.9987,0.0003,1.0,0.0
+NSL-KDD,XGBoost,0.9986,0.0004,1.0,0.0
+NSL-KDD,LightGBM,0.9991,0.0003,1.0,0.0
+KDDCup99-SF,RandomForest,0.9973,0.0014,1.0,0.0
+KDDCup99-SF,XGBoost,0.997,0.0016,0.9999,0.0001
+KDDCup99-SF,LightGBM,0.9983,0.0008,0.9999,0.0001
+NetIntrusion,RandomForest,0.9879,0.0013,0.9994,0.0001
+NetIntrusion,XGBoost,0.9892,0.0016,0.9995,0.0001
+NetIntrusion,LightGBM,0.9891,0.0014,0.9996,0.0001

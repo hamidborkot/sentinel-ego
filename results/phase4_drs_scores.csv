@@ -1,0 +1,11 @@
+archetype,jsd_evolution,drs_score,confusion_score,hour_shift,entropy_shift
+Morning Bird,0.2831,0.9437,0.9013,14.8,0.9013
+Social Butterfly,0.2587,0.8624,0.886,16.0,0.886
+Collaborator,0.2458,0.8194,0.6119,14.95,0.6119
+Balanced,0.2434,0.8114,0.8787,10.14,0.8787
+Tech Savvy,0.228,0.7599,0.2822,11.97,0.2822
+Workaholic,0.2262,0.754,0.8594,13.07,0.8594
+Workaholic (8),0.2001,0.667,0.8789,12.89,0.8789
+Lone Wolf,0.1922,0.6405,0.6334,13.91,0.6334
+Careful Planner,0.1908,0.636,0.392,13.01,0.392
+Night Owl,0.1319,0.4397,0.5444,11.03,0.5444
