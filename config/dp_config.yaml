@@ -1,0 +1,49 @@
+# ============================================================
+# Differential Privacy Configuration — The Sentinel Ego
+# ============================================================
+
+differential_privacy:
+  mechanism: "Gaussian"
+  accounting_method: "Renyi_DP"
+  alpha: 10  # Rényi order
+  delta: 1.0e-5
+
+  # Gradient clipping
+  clipping_norm: 1.0  # C = 1.0
+
+  # Noise configurations evaluated
+  sigma_configs:
+    - sigma: 0.5
+      epsilon: 1.2832
+      delta: 1.0e-5
+      strength: "Moderate"
+      n_rounds: 10
+      n_nodes: 10
+    - sigma: 1.0
+      epsilon: 1.2802
+      delta: 1.0e-5
+      strength: "Moderate (stronger, paper claim)"
+      n_rounds: 10
+      n_nodes: 10
+
+  # Paper claim (Section 5.3)
+  paper_claim:
+    sigma: 1.0
+    clipping_norm: 1.0
+    epsilon: 1.2802
+    delta: 1.0e-5
+    alpha: 10
+    n_rounds: 10
+    n_nodes: 10
+    statement: >
+      We apply the Gaussian mechanism with sigma=1.0 and gradient
+      clipping (C=1.0), achieving (1.2802, 1e-5)-DP per Renyi DP
+      accounting (alpha=10) over 10 communication rounds across
+      10 Ego nodes.
+
+  # Benchmarks for comparison (DP literature)
+  benchmarks:
+    strong_epsilon: 1.0
+    acceptable_epsilon: 3.0
+    our_epsilon: 1.2802
+    assessment: "Moderate — between strong (<1.0) and acceptable (<3.0)"

@@ -1,0 +1,179 @@
+# ============================================================
+# The Sentinel Ego — Master System Configuration
+# ============================================================
+
+system:
+  name: "The Sentinel Ego"
+  version: "1.0.0"
+  target_journal: "IEEE Transactions on Information Forensics and Security (TIFS)"
+  base_dir: "/content/sentinel_ego"
+  random_seed: 42
+  cpu_only: true
+
+# ── Phase 1: Persistent Behavioral Identity ──────────────────
+pbi:
+  dataset: "enron"
+  enron_url: "https://www.cs.cmu.edu/~enron/enron_mail_20150507.tar.gz"
+  eligibility:
+    min_sent_emails: 200
+    min_active_days: 30
+    min_span_days: 60
+  clustering:
+    k_range: [2, 11]
+    optimal_k: 10
+    method: "kmeans"
+    metric: "silhouette"
+  markov:
+    order: 3
+    state_space: "hour"  # 0-23
+  trajectory:
+    short_days: 30
+    long_days: 90
+    personas_per_archetype: 3
+    total_personas: 30
+  consistency:
+    jsd_target: 0.10
+    kl_target: 0.10
+    dimensions: ["hour", "dayofweek", "recipients"]
+
+archetypes:
+  - name: "Morning Bird"
+    mean_hour: 5.87
+    emails_per_day: 6.84
+    weekend_ratio: 0.007
+    mean_recipients: 2.09
+  - name: "Collaborator"
+    mean_hour: 6.59
+    emails_per_day: 5.86
+    weekend_ratio: 0.031
+    mean_recipients: 3.20
+  - name: "Balanced"
+    mean_hour: 7.43
+    emails_per_day: 4.55
+    weekend_ratio: 0.014
+    mean_recipients: 2.14
+  - name: "Workaholic"
+    mean_hour: 7.50
+    emails_per_day: 5.10
+    weekend_ratio: 0.153
+    mean_recipients: 2.27
+  - name: "Night Owl"
+    mean_hour: 12.14
+    emails_per_day: 4.92
+    weekend_ratio: 0.012
+    mean_recipients: 1.95
+  - name: "Tech Savvy"
+    mean_hour: 5.89
+    emails_per_day: 23.30
+    weekend_ratio: 0.015
+    mean_recipients: 1.94
+  - name: "Careful Planner"
+    mean_hour: 9.94
+    emails_per_day: 4.82
+    weekend_ratio: 0.008
+    mean_recipients: 2.26
+  - name: "Lone Wolf"
+    mean_hour: 8.71
+    emails_per_day: 4.52
+    weekend_ratio: 0.039
+    mean_recipients: 1.59
+  - name: "Workaholic_8"
+    mean_hour: 10.22
+    emails_per_day: 8.48
+    weekend_ratio: 0.092
+    mean_recipients: 2.66
+  - name: "Social Butterfly"
+    mean_hour: 6.85
+    emails_per_day: 9.47
+    weekend_ratio: 0.037
+    mean_recipients: 8.04
+
+# ── Phase 2: AIF Profiler ─────────────────────────────────────
+aif:
+  n_features: 42
+  feature_groups:
+    - temporal
+    - behavioral
+    - knowledge
+    - strategic
+    - psychological
+    - technical
+  datasets:
+    - name: "KDDCup99-SF"
+      rows: 73237
+      attack_rows: 3298
+      source_features: 5
+    - name: "NSL-KDD"
+      rows: 22544
+      attack_rows: 12833
+      source_features: 41
+    - name: "NetIntrusion"
+      rows: 25000
+      attack_rows: 11663
+      source_features: 3
+  models:
+    RandomForest:
+      n_estimators: 200
+      max_depth: 20
+      class_weight: "balanced"
+    XGBoost:
+      n_estimators: 200
+      max_depth: 6
+      learning_rate: 0.05
+      subsample: 0.8
+    LightGBM:
+      n_estimators: 200
+      verbose: -1
+    MLP:
+      hidden_layer_sizes: [256, 128, 64]
+      max_iter: 500
+  train_test_split: 0.80
+  cross_val_folds: 5
+  smote: true
+
+# ── Phase 3: Federated Adversarial Learning ───────────────────
+fal:
+  n_nodes: 10
+  communication_rounds: 10
+  aggregation: "fedavg"
+  dataset: "NSL-KDD"
+  partition: "non-iid"
+  local_model: "LightGBM"
+  isolated_baseline_f1: 0.9779
+
+# ── Phase 4: Collective Deception Evolution ───────────────────
+cde:
+  max_cycles: 10
+  convergence_cycle: 4
+  ab_pairs: 40
+  attacker_types:
+    - Script_Kiddie
+    - APT_Human
+    - AI_Recon_Agent
+    - Pen_Tester
+  longevity_target_apt: 10.0
+  longevity_target_mean: 5.0
+  fp_rate_target: 0.05
+
+# ── Phase 5: Mirror Defense ───────────────────────────────────
+mirror:
+  high_value_personas:
+    - Alice_HR
+    - Carol_Finance
+    - David_IT
+  risk_features: ["SBD", "CAS", "UMS", "LARS"]
+  detection_target: 0.95
+  fpr_target: 0.02
+  latency_p99_target_ms: 500
+  phishing_profiles: 900
+
+# ── Phase 6: Integration & Evaluation ────────────────────────
+btt:
+  sessions_per_ego_per_attacker: 20
+  total_sessions: 800
+  fool_rate_target: 0.80
+
+scalability:
+  node_counts: [1, 5, 10, 20, 50]
+  ram_per_node_target_mb: 100
+  p99_latency_target_ms: 500
