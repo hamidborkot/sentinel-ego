@@ -1,0 +1,110 @@
+# ============================================================
+# Sentinel Ego — Experiment Configuration
+# ============================================================
+# Edit this file to change hyperparameters across all phases.
+# All notebooks import from this config via yaml.safe_load().
+
+# ----- Global -----------------------------------------------
+global:
+  seed: 42
+  output_dir: "/content/sentinel_ego_outputs"
+  log_level: "INFO"
+
+# ----- Phase 1: PBI (Persistent Behavioral Identity) --------
+phase1:
+  enron_url: "https://www.cs.cmu.edu/~enron/enron_mail_20150507.tar.gz"
+  min_sent_emails: 200
+  min_active_days: 30
+  min_span_days: 60
+  n_archetypes: 10                  # K for K-Means clustering
+  markov_order: 3                   # 3rd-order Markov chain
+  trajectory_days: 90               # persona simulation window
+  personas_per_archetype: 3
+  kl_consistency_target: 0.10       # target KL divergence threshold
+  features:
+    - mean_hour
+    - std_hour
+    - peak_hour
+    - weekend_ratio
+    - mean_recipients
+    - entropy_hour
+    - entropy_dow
+    - emails_per_active_day
+
+# ----- Phase 2: AIF (Adversarial Interaction Fingerprinting) -
+phase2:
+  aif_vector_size: 42
+  test_size: 0.20
+  stratify: true
+  models:
+    random_forest:
+      n_estimators: 200
+      max_depth: 20
+      class_weight: "balanced"
+      n_jobs: -1
+    xgboost:
+      n_estimators: 200
+      max_depth: 6
+      learning_rate: 0.05
+      subsample: 0.8
+      n_jobs: -1
+    lightgbm:
+      n_estimators: 200
+      verbosity: -1
+      n_jobs: -1
+    mlp:
+      hidden_layer_sizes: [128, 64]
+      max_iter: 300
+  datasets:
+    - name: "KDDCup99-SF"
+      source: "sklearn"
+      subset: "SF"
+    - name: "NSL-KDD"
+      source: "file"
+      train_path: "data/raw/nsl_kdd/KDDTrain+.txt"
+      test_path: "data/raw/nsl_kdd/KDDTest+.txt"
+    - name: "NetIntrusion"
+      source: "kaggle"
+      path: "data/raw/netintrusion/Train_data.csv"
+
+# ----- Phase 3: FAL (Federated Adversarial Learning) ---------
+phase3:
+  n_nodes: 10
+  n_rounds: 10
+  federation_algorithm: "FedAvg"
+  data_distribution: "non-IID"
+  differential_privacy:
+    mechanism: "Gaussian"
+    sigma_values: [0.5, 1.0]
+    clip_norm: 1.0
+    delta: 1.0e-5
+    rdp_alpha: 10
+  primary_dataset: "NSL-KDD"
+
+# ----- Phase 4: CDE (Collective Deception Evolution) ---------
+phase4:
+  n_rounds: 15
+  mutation_rate: 0.15
+  strategy_cycle:
+    - evasive
+    - mimicry
+    - noise
+  drs_weights:
+    jsd_weight: 0.40
+    detection_weight: 0.40
+    entropy_weight: 0.20
+  jsd_ceiling: 0.30
+
+# ----- Phase 5: Mirror Defense & Final Evaluation -----------
+phase5:
+  drift_threshold: 0.10
+  recovery_rate: 0.60
+  cv_folds: 5
+  ablation_dataset: "NSL-KDD"
+  ablation_components:
+    - "Legacy IDS (no Sentinel)"
+    - "+ PBI Behavioral Context"
+    - "+ AIF 42-Feature Profiling"
+    - "+ FAL Federation (10 nodes)"
+    - "+ CDE Evasion-Aware"
+    - "Full Pipeline (PBI+AIF+FAL+CDE+Mirror)"

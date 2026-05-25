@@ -1,0 +1,39 @@
+cff-version: 1.2.0
+message: "If you use this code or results in your research, please cite as below."
+type: software
+title: "The Sentinel Ego: A Federated Adversarial Deception Framework with Persistent Behavioral Identities"
+authors:
+  - family-names: "Borkot Tulla"
+    given-names: "MD Hamid"
+    orcid: ""
+    affiliation: "Université Bourgogne"
+repository-code: "https://github.com/hamidborkot/sentinel-ego"
+license: MIT
+version: "1.0.0"
+date-released: "2026-05-21"
+keywords:
+  - federated learning
+  - intrusion detection
+  - adversarial deception
+  - differential privacy
+  - behavioral identity
+  - cybersecurity
+  - insider threat
+abstract: >
+  The Sentinel Ego is a federated adversarial deception framework that combines
+  Persistent Behavioral Identity (PBI) generation, Adversarial Interaction
+  Fingerprinting (AIF), Federated Adversarial Learning (FAL) with differential
+  privacy, Collective Deception Evolution (CDE), and Mirror Defense into a unified
+  five-phase system for enterprise intrusion detection and behavioral deception.
+  Evaluated on real Enron email data and three network intrusion benchmarks
+  (NSL-KDD, KDDCup99-SF, NetIntrusion), the system achieves F1=0.9994 with a
+  formal (1.2802, 1e-5)-DP guarantee under Rényi DP accounting.
+preferred-citation:
+  type: article
+  title: "The Sentinel Ego: A Federated Adversarial Deception Framework with Persistent Behavioral Identities"
+  authors:
+    - family-names: "Borkot Tulla"
+      given-names: "MD Hamid"
+  journal: "IEEE Transactions on Information Forensics and Security"
+  year: 2026
+  status: submitted

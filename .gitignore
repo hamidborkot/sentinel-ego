@@ -1,0 +1,50 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# Virtual environments
+.env
+.venv
+env/
+venv/
+
+# Raw datasets (too large for git — see data/README_data.md for download instructions)
+data/raw/
+data/processed/
+
+# Colab outputs
+/content/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Model checkpoints (large binaries)
+*.pkl
+*.joblib
+*.h5
+*.pt
+*.pth
+*.bin
+
+# Logs
+*.log
+logs/
