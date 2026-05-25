@@ -1,0 +1,11 @@
+archetype,kl_hour,kl_dow,kl_recipients,kl_mean,status
+Morning Bird,0.2257,0.0433,0.0416,0.1035,STABLE (KL_DoW<0.3 & KL_Rec<0.3)
+Collaborator,0.9637,0.3219,0.0484,0.4447,PARTIAL (KL_Hour>0.3)
+Balanced,0.3438,0.0179,0.1959,0.1859,STABLE (KL_DoW<0.3 & KL_Rec<0.3)
+Workaholic,0.2262,0.0498,0.1210,0.1324,STABLE (KL_DoW<0.3 & KL_Rec<0.3)
+Night Owl,0.7895,0.0356,0.1752,0.3335,STABLE (KL_DoW<0.3 & KL_Rec<0.3)
+Tech Savvy,0.0795,0.0608,0.0258,0.0554,STABLE (KL_DoW<0.3 & KL_Rec<0.3)
+Careful Planner,0.3979,0.0188,0.0406,0.1524,STABLE (KL_DoW<0.3 & KL_Rec<0.3)
+Lone Wolf,0.6669,0.0688,0.1755,0.3037,STABLE (KL_DoW<0.3 & KL_Rec<0.3)
+Workaholic-8,0.0726,0.0318,0.0319,0.0455,STABLE (KL_DoW<0.3 & KL_Rec<0.3)
+Social Butterfly,0.1837,0.0419,0.0541,0.0932,STABLE (KL_DoW<0.3 & KL_Rec<0.3)

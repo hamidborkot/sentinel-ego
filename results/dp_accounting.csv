@@ -1,0 +1,6 @@
+sigma,C,rounds,nodes,alpha,delta,rdp_total,epsilon,note
+0.5,1.0,10,10,10,1e-5,800.0,201.2792,Too weak
+1.0,1.0,10,10,10,1e-5,50.0,51.2792,Weak for paper
+1.5,1.0,10,10,10,1e-5,22.2222,23.5014,Moderate tradeoff
+2.0,1.0,10,10,10,1e-5,12.5,13.7792,PAPER CHOICE — (13.7792 1e-5)-DP
+3.0,1.0,10,10,10,1e-5,5.5556,6.8348,Strongest but high noise
