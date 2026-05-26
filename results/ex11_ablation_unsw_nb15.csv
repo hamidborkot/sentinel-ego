@@ -1,0 +1,7 @@
+component,f1_mean,f1_std,delta_f1,dataset
+Legacy_IDS_no_Sentinel,0.8091,0.0049,0.0000,UNSW-NB15
+Plus_PBI_Behavioral_Context,0.8615,0.0042,0.0524,UNSW-NB15
+Plus_AIF_42Feature_Profiling,0.8853,0.0030,0.0761,UNSW-NB15
+Plus_FAL_Federation_10nodes,0.8890,0.0034,0.0798,UNSW-NB15
+Plus_CDE_Evasion_Aware,0.8812,0.0039,0.0720,UNSW-NB15
+Full_Pipeline_All,0.8896,0.0024,0.0805,UNSW-NB15

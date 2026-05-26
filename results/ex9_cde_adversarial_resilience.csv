@@ -1,0 +1,6 @@
+dataset,sentinel_baseline,legacy_baseline,sentinel_trough,legacy_trough,resilience_advantage,peak_jsd,mutation_rounds,attack_types
+KDDCup99-SF,0.9450,0.9450,0.9450,0.9450,0.0000,0.1289,15,evasive/mimicry/noise
+NSL-KDD,0.9565,0.9353,0.9460,0.9353,0.0107,0.1915,15,evasive/mimicry/noise
+NetIntrusion,0.9587,0.9207,0.9366,0.9205,0.0161,0.2097,15,evasive/mimicry/noise
+CICIDS2017,0.9500,0.9002,0.9199,0.9002,0.0198,0.0672,15,evasive/mimicry/noise
+UNSW-NB15,0.8904,0.8117,0.8584,0.7665,0.0919,0.0815,15,evasive/mimicry/noise

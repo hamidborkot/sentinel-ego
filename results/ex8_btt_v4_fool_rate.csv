@@ -1,0 +1,12 @@
+archetype,attacker_accuracy,fool_rate,version,ndays,attacker_model,status
+Careful_Planner,0.5887,0.8227,v4,900,DTree_depth1,OK
+Social_Butterfly,0.5518,0.8965,v4,900,DTree_depth1,OK
+Lone_Wolf,0.5644,0.8712,v4,900,DTree_depth1,OK
+Night_Owl,0.5608,0.8784,v4,900,DTree_depth1,OK
+Collaborator,0.5790,0.8420,v4,900,DTree_depth1,OK
+Info_Seeker,0.5200,0.9600,v4,900,DTree_depth1,OK
+Data_Handler,0.5311,0.9377,v4,900,DTree_depth1,OK
+System_Admin,0.5994,0.8011,v4,900,DTree_depth1,OK
+External_Comm,0.5429,0.9141,v4,900,DTree_depth1,OK
+Multi_Tasker,0.5306,0.9389,v4,900,DTree_depth1,OK
+MEAN,0.5569,0.8863,v4,900,DTree_depth1,PASS_10of10

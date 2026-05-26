@@ -1,0 +1,7 @@
+component,f1_mean,f1_std,delta_f1,dataset
+Legacy_IDS_no_Sentinel,0.9392,0.0024,0.0000,NSL-KDD
+Plus_PBI_Behavioral_Context,0.9414,0.0025,0.0022,NSL-KDD
+Plus_AIF_42Feature_Profiling,0.9584,0.0018,0.0192,NSL-KDD
+Plus_FAL_Federation_10nodes,0.9595,0.0018,0.0203,NSL-KDD
+Plus_CDE_Evasion_Aware,0.9532,0.0024,0.0140,NSL-KDD
+Full_Pipeline_All,0.9611,0.0027,0.0219,NSL-KDD

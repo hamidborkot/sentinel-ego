@@ -1,0 +1,7 @@
+component,f1_mean,f1_std,delta_f1,dataset
+Legacy_IDS_no_Sentinel,0.8989,0.0019,0.0000,CICIDS2017
+Plus_PBI_Behavioral_Context,0.9133,0.0021,0.0144,CICIDS2017
+Plus_AIF_42Feature_Profiling,0.9454,0.0014,0.0466,CICIDS2017
+Plus_FAL_Federation_10nodes,0.9497,0.0011,0.0509,CICIDS2017
+Plus_CDE_Evasion_Aware,0.9393,0.0012,0.0404,CICIDS2017
+Full_Pipeline_All,0.9502,0.0015,0.0514,CICIDS2017

@@ -1,0 +1,13 @@
+component,f1_mean,f1_std,delta_f1,dataset
+Legacy_IDS_no_Sentinel,0.9209,0.0032,0.0000,NetIntrusion
+Plus_PBI_Behavioral_Context,0.9287,0.0024,0.0078,NetIntrusion
+Plus_AIF_42Feature_Profiling,0.9532,0.0019,0.0323,NetIntrusion
+Plus_FAL_Federation_10nodes,0.9555,0.0012,0.0347,NetIntrusion
+Plus_CDE_Evasion_Aware,0.9491,0.0024,0.0282,NetIntrusion
+Full_Pipeline_All,0.9566,0.0032,0.0358,NetIntrusion
+Legacy_IDS_no_Sentinel,0.9471,0.0034,0.0000,KDDCup99-SF
+Plus_PBI_Behavioral_Context,0.9471,0.0034,0.0000,KDDCup99-SF
+Plus_AIF_42Feature_Profiling,0.9466,0.0034,-0.0005,KDDCup99-SF
+Plus_FAL_Federation_10nodes,0.9471,0.0034,0.0000,KDDCup99-SF
+Plus_CDE_Evasion_Aware,0.9471,0.0034,0.0000,KDDCup99-SF
+Full_Pipeline_All,0.9471,0.0034,0.0000,KDDCup99-SF
