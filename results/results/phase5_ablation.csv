@@ -1,0 +1,7 @@
+component,f1,auc,delta_f1
+W/o Sentinel (Legacy IDS),0.9744,0.9987,0.0
++ PBI Behavioral Context,0.9989,1.0,0.0245
++ AIF 42-Feature Profiling,0.9989,1.0,0.0245
++ FAL Federation (10 nodes),0.999,1.0,0.0246
++ CDE Evasion-Aware,0.999,1.0,0.0246
+Full Pipeline (all components),0.9988,1.0,0.0244
