@@ -1,0 +1,51 @@
+dataset,archetype,drs_score
+CICIDS2017,Morning Bird,0.8898
+CICIDS2017,Collaborator,0.9485
+CICIDS2017,Balanced,0.9165
+CICIDS2017,Workaholic,0.9364
+CICIDS2017,Night Owl,0.9721
+CICIDS2017,Tech Savvy,0.9396
+CICIDS2017,Careful Planner,0.9723
+CICIDS2017,Lone Wolf,0.9527
+CICIDS2017,Workaholic_8,0.9774
+CICIDS2017,Social Butterfly,0.8765
+KDDCup99-SF,Morning Bird,0.6683
+KDDCup99-SF,Collaborator,0.6494
+KDDCup99-SF,Balanced,0.7224
+KDDCup99-SF,Workaholic,0.6902
+KDDCup99-SF,Night Owl,0.7364
+KDDCup99-SF,Tech Savvy,0.7126
+KDDCup99-SF,Careful Planner,0.705
+KDDCup99-SF,Lone Wolf,0.7859
+KDDCup99-SF,Workaholic_8,0.7242
+KDDCup99-SF,Social Butterfly,0.6988
+NSL-KDD,Morning Bird,0.6407
+NSL-KDD,Collaborator,0.7277
+NSL-KDD,Balanced,0.7182
+NSL-KDD,Workaholic,0.6366
+NSL-KDD,Night Owl,0.6743
+NSL-KDD,Tech Savvy,0.6896
+NSL-KDD,Careful Planner,0.6145
+NSL-KDD,Lone Wolf,0.669
+NSL-KDD,Workaholic_8,0.7361
+NSL-KDD,Social Butterfly,0.6155
+NetIntrusion,Morning Bird,0.6616
+NetIntrusion,Collaborator,0.7177
+NetIntrusion,Balanced,0.6172
+NetIntrusion,Workaholic,0.6238
+NetIntrusion,Night Owl,0.6507
+NetIntrusion,Tech Savvy,0.6626
+NetIntrusion,Careful Planner,0.6579
+NetIntrusion,Lone Wolf,0.5815
+NetIntrusion,Workaholic_8,0.6114
+NetIntrusion,Social Butterfly,0.6461
+UNSW-NB15,Morning Bird,0.5036
+UNSW-NB15,Collaborator,0.5618
+UNSW-NB15,Balanced,0.5034
+UNSW-NB15,Workaholic,0.5015
+UNSW-NB15,Night Owl,0.5903
+UNSW-NB15,Tech Savvy,0.513
+UNSW-NB15,Careful Planner,0.4771
+UNSW-NB15,Lone Wolf,0.5162
+UNSW-NB15,Workaholic_8,0.507
+UNSW-NB15,Social Butterfly,0.5447

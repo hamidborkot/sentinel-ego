@@ -1,0 +1,11 @@
+archetype,kl_hour,kl_dow,kl_rcpt,kl_mean,consistency
+Morning Bird,0.0077,0.0509,0.0537,0.0374,Strong
+Collaborator,0.0119,0.016,0.0115,0.0132,Strong
+Balanced,0.0371,0.0173,0.0078,0.0208,Strong
+Workaholic,0.0071,0.0766,0.0025,0.0288,Strong
+Night Owl,0.0393,0.0228,0.0093,0.0238,Strong
+Tech Savvy,0.0363,0.0438,0.0201,0.0334,Strong
+Careful Planner,0.0303,0.0119,0.0404,0.0275,Strong
+Lone Wolf,0.0402,0.0432,0.0075,0.0303,Strong
+Workaholic_8,0.0318,0.012,0.0014,0.015,Strong
+Social Butterfly,0.0131,0.0271,0.0049,0.015,Strong
