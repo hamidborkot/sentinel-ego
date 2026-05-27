@@ -6,24 +6,25 @@
 [![Python](https://img.shields.io/badge/Python-3.10%2B-blue?logo=python)](https://python.org)
 [![Platform](https://img.shields.io/badge/Platform-CPU--Only%20%7C%20Google%20Colab-orange?logo=googlecolab)](https://colab.research.google.com)
 [![License](https://img.shields.io/badge/License-MIT-green)](LICENSE)
-[![Experiments](https://img.shields.io/badge/Experiments-EX--1%20to%20EX--13-brightgreen)](#experiments-ex-1--ex-13)
-[![Claims](https://img.shields.io/badge/Paper%20Claims-28%2F28%20Validated-brightgreen)](#validated-paper-claims-2828)
-[![BTT](https://img.shields.io/badge/Behavioral%20Turing%20Test-88.6%25-blue)](#ex-8--behavioral-turing-test-btt-v4)
-[![DP](https://img.shields.io/badge/Differential%20Privacy-%CE%B5%3D13.7792%20%28%CF%83%3D2.0%29-purple)](#ex-1--differential-privacy-accounting)
+[![Phase](https://img.shields.io/badge/Pipeline-Phase%201--5%20Complete-brightgreen)](#pipeline-phases-1--5)
+[![Datasets](https://img.shields.io/badge/Datasets-5%20Benchmarks-blue)](#-datasets)
+[![KL](https://img.shields.io/badge/KL%20Consistency-0.0245%20%3C%200.30-brightgreen)](#table-v--phase-1-90-day-kl-consistency)
+[![F1](https://img.shields.io/badge/Best%20F1-0.9993%20(NSL--KDD)-brightgreen)](#table-i--phase-2-best-aif-model-per-dataset)
+[![DP](https://img.shields.io/badge/Differential%20Privacy-%CE%B5%3D51.28%20(%CF%83%3D1.0)-purple)](#table-ii--phase-3-federated-learning)
 
 ---
 
 ## 📋 Overview
 
-The **Sentinel Ego** is a novel cybersecurity framework consisting of ten persistent synthetic employee personas ("Ego nodes"), each possessing a unique behavioral identity grounded in real Enron email data. Together they form a federated honeypot collective that:
+The **Sentinel Ego** is a novel cybersecurity framework of ten persistent synthetic employee personas ("Ego nodes"), each possessing a unique behavioral identity grounded in real Enron email data. Together they form a federated honeypot collective that:
 
 - 🎭 **Deceives attackers** using behaviorally realistic, temporally consistent synthetic identities
-- 🔍 **Profiles adversaries** in real-time via a 42-feature Adversarial Interaction Fingerprint (AIF)
-- 🤝 **Shares threat intelligence** through privacy-preserving Federated Adversarial Learning (FedAvg)
-- 🧬 **Evolves deception strategies** collectively via Collective Deception Evolution (CDE)
+- 🔍 **Profiles adversaries** via a 42-feature Adversarial Interaction Fingerprint (AIF)
+- 🤝 **Shares threat intelligence** through privacy-preserving Federated Adversarial Learning (FedAvg + DP)
+- 🧬 **Evolves deception strategies** via Collective Deception Evolution (CDE) across 15 mutation rounds
 - 🪞 **Intercepts spear-phishing** pre-click using Mirror Ego behavioral risk scoring
 
-All six phases were executed **CPU-only on Google Colab** using **five real benchmark datasets**. No GPU required. Total system RAM at 10 nodes: **~8.1 MB**.
+**Full pipeline validated on 5 real benchmark datasets** — CPU-only, Google Colab compatible. No GPU required.
 
 ---
 
@@ -31,266 +32,186 @@ All six phases were executed **CPU-only on Google Colab** using **five real benc
 
 ```
 sentinel-ego/
-├── README.md                          # This file (fully updated)
-├── LICENSE                            # MIT License
-├── requirements.txt                   # Python dependencies
-├── RESULTS.md                         # Headline results summary
-├── config/                            # Experiment configuration files
+├── README.md                                    # This file
+├── LICENSE
+├── requirements.txt
+├── RESULTS.md
+├── config/
 │
-├── notebooks/                         # Google Colab notebooks (Phase 1–6)
+├── notebooks/
+│   ├── pipeline_phases1to5_all5datasets.py      # ✅ Complete reproducible pipeline (NEW)
 │   ├── Phase1_PBI_Enron_Mining.ipynb
 │   ├── Phase2_AIF_Profiler.ipynb
 │   ├── Phase3_FAL_FedAvg_DP.ipynb
 │   ├── Phase4_CDE_Evolution.ipynb
-│   ├── Phase5_Mirror_Defense.ipynb
-│   └── Phase6_Integration_BTT.ipynb
+│   └── Phase5_Mirror_Defense.ipynb
 │
-├── src/                               # Core modules
-│   ├── pbi/                           # Persistent Behavioral Identity
-│   ├── aif/                           # Adversarial Interaction Fingerprinting
-│   ├── fal/                           # Federated Adversarial Learning
-│   ├── cde/                           # Collective Deception Evolution
-│   ├── mirror/                        # Mirror Defense
-│   └── ex8_btt_v4.py                  # EX-8 BTT v4 standalone script
+├── src/
+│   ├── pbi/                                     # Persistent Behavioral Identity
+│   ├── aif/                                     # Adversarial Interaction Fingerprinting
+│   ├── fal/                                     # Federated Adversarial Learning
+│   ├── cde/                                     # Collective Deception Evolution
+│   └── mirror/                                  # Mirror Defense
 │
-├── data/
-│   ├── raw/                           # Raw dataset download scripts
-│   └── processed/                     # Processed feature files
+├── figures/                                     # 8 publication-ready figures (300 DPI)
+│   ├── fig1_silhouette.png
+│   ├── fig2_kl_consistency.png
+│   ├── fig3_aif_heatmap.png
+│   ├── fig4_federation_nodes.png
+│   ├── fig5_cde_evolution.png
+│   ├── fig6_drs_heatmap.png
+│   ├── fig7_mirror_cv.png
+│   └── fig8_ablation.png
 │
-├── results/                           # All experimental output CSVs
-│   ├── EX1_to_EX13_results.md         # Full EX-1 to EX-13 results
-│   ├── phase1/                        # PBI results
-│   ├── phase2/                        # AIF profiler results
-│   ├── phase3/                        # FAL + DP results
-│   ├── phase4/                        # CDE results
-│   ├── phase5/                        # Mirror Defense results
-│   └── phase6/                        # BTT + system integration results
+├── results/
+│   ├── EX1_to_EX13_results.md
+│   ├── phase1/ | phase2/ | phase3/ | phase4/ | phase5/
+│   ├── v2_cicids_unsw/
+│   └── v3_all5_datasets/                        # ✅ Full pipeline CSVs (NEW)
+│       ├── README.md
+│       ├── phase1_kl_90day_fixed.csv
+│       ├── phase2_aif_all5.csv
+│       ├── phase3_federation_all5.csv
+│       ├── phase4_cde_evolution_all5.csv
+│       ├── phase4_drs_scores_all5.csv
+│       ├── phase5_5fold_cv_all5.csv
+│       ├── phase5_ablation_nslkdd.csv
+│       └── phase5_mirror_defense_all5.csv
 │
-└── paper/                             # Paper-ready figures, tables, LaTeX
-    ├── figures/
-    └── tables/
+└── data/
+    ├── raw/
+    └── processed/
 ```
 
 ---
 
 ## 🔬 Datasets
 
-| Dataset | Source | Records | Use |
-|---------|--------|---------|-----|
-| Enron Email Corpus | [CMU](https://www.cs.cmu.edu/~enron/) | 517,401 emails | PBI behavioral mining |
-| KDDCup99-SF | [UCI/Kaggle](https://www.kaggle.com/datasets/galaxyh/kdd-cup-1999-data) | 73,237 rows | AIF profiler training |
-| NSL-KDD | [UNB](https://www.unb.ca/cic/datasets/nsl.html) | 22,544 rows | AIF + FAL training |
-| UNSW-NB15 | [UNSW](https://research.unsw.edu.au/projects/unsw-nb15-dataset) | 82,332 rows | AIF generalization + CDE |
-| CIC-IDS2017 | [UNB CIC](https://www.unb.ca/cic/datasets/ids-2017.html) | 50,000 rows | AIF generalization + Ablation |
+| Dataset | Source | Rows | Features | Attack Rate |
+|---------|--------|------|----------|-------------|
+| KDDCup99-SF | [Kaggle](https://www.kaggle.com/datasets/galaxyh/kdd-cup-1999-data) | 73,237 | 5 | 4.5% |
+| NSL-KDD | [UNB](https://www.unb.ca/cic/datasets/nsl.html) | 125,973 | 42 | 46.5% |
+| NetIntrusion | UCI | 25,000 | 42 | 80.1% |
+| CICIDS2017 | [UNB CIC](https://www.unb.ca/cic/datasets/ids-2017.html) | 56,661 | 78 | 59.9% |
+| UNSW-NB15 | [UNSW](https://research.unsw.edu.au/projects/unsw-nb15-dataset) | 82,332 | 43 | 55.1% |
+| Enron Email | [CMU](https://www.cs.cmu.edu/~enron/) | 517,401 emails | — | PBI mining |
+
+> All datasets are **real, raw network traffic** — no synthetic data used.
 
 ---
 
-## 🧪 Experiments: EX-1 → EX-13
+## Pipeline: Phases 1 – 5
 
-### EX-1 — Differential Privacy Accounting
-
-**Method:** Gaussian mechanism, Rényi DP accounting (α=10), σ=2.0, C=1.0, T=10 rounds, δ=1×10⁻⁵
-
-| σ | ε (Rényi DP, α=10) | Status |
-|---|---|---|
-| 0.5 | 51.2847 | — |
-| 1.0 | 14.3219 | — |
-| 1.5 | 13.9104 | — |
-| **2.0** | **13.7792** | ✅ **Published value** |
-| 3.0 | 13.6688 | — |
-
-> **Paper statement (Section 5.3):** *"We apply the Gaussian mechanism with σ=2.0 and gradient clipping (C=1.0), achieving (13.7792, 1×10⁻⁵)-DP per Rényi DP accounting (α=10) over 10 communication rounds across 10 Ego nodes."*
-
----
-
-### EX-2 / EX-3 / EX-4 — PBI Behavioral Fidelity (KL Divergence)
-
-**Dataset:** Enron Email Corpus — 517,401 emails, 150 users, 92 eligible after filtering  
-**Method:** K-Means (K=10, silhouette-optimal) + 3rd-order Markov Chain synthesis  
-
-| Experiment | Feature | Archetypes ΔKL < 0.10 | Mean ΔKL |
-|---|---|---|---|
-| EX-2 | Hourly activity (KL) | **8/10** | 0.0312 |
-| EX-3 | Day-of-week (KL) | **9/10** | 0.0285 |
-| EX-4 | Recipient count (KL) | **10/10** | 0.0198 |
-
-**Discovered Archetypes (10 Ego Nodes):**
-
-| Archetype | Mean Hour | Emails/Day | Weekend % | Mean Recipients |
-|-----------|-----------|------------|-----------|-----------------|
-| Careful_Planner | 9.94 | 4.82 | 0.8% | 2.26 |
-| Social_Butterfly | 6.85 | 9.47 | 3.7% | 8.04 |
-| Lone_Wolf | 8.71 | 4.52 | 3.9% | 1.59 |
-| Night_Owl | 12.14 | 4.92 | 1.2% | 1.95 |
-| Collaborator | 6.59 | 5.86 | 3.1% | 3.20 |
-| Info_Seeker | 7.43 | 4.55 | 1.4% | 2.14 |
-| Data_Handler | 5.89 | 23.30 | 1.5% | 1.94 |
-| System_Admin | 10.22 | 8.48 | 9.2% | 2.66 |
-| External_Comm | 7.50 | 5.10 | 15.3% | 2.27 |
-| Multi_Tasker | 5.87 | 6.84 | 0.7% | 2.09 |
-
----
-
-### EX-5 — AIF Profiler: KDDCup99-SF
-
-**Models:** RandomForest, XGBoost, LightGBM, MLP — 5-fold cross-validation  
-
-| Model | F1-Score | AUC-ROC |
-|-------|----------|---------|
-| RandomForest | 0.9312 | 0.9841 |
-| XGBoost | 0.9428 | 0.9903 |
-| **LightGBM** | **0.9471** | **0.9921** |
-| MLP | 0.9187 | 0.9762 |
-
----
-
-### EX-6 — AIF Profiler: 4 Remaining Datasets
+### TABLE I — Phase 2: Best AIF Model per Dataset
 
 | Dataset | Best Model | F1-Score | AUC-ROC |
 |---------|------------|----------|---------|
-| NSL-KDD | LightGBM | **0.9565** | 0.9887 |
-| UNSW-NB15 | LightGBM | **0.9412** | 0.9834 |
-| CIC-IDS2017 | LightGBM | **0.9389** | 0.9801 |
-| KDDCup99-SF | LightGBM | **0.9471** | 0.9921 |
+| KDDCup99-SF | RandomForest | 0.9992 | 1.0000 |
+| NSL-KDD | LightGBM | **0.9993** | 1.0000 |
+| NetIntrusion | XGBoost | 0.9990 | 1.0000 |
+| CICIDS2017 | LightGBM | 0.9972 | 0.9996 |
+| UNSW-NB15 | LightGBM | 0.9802 | 0.9982 |
+
+> Full 4-model × 5-dataset results: [`results/v3_all5_datasets/phase2_aif_all5.csv`](results/v3_all5_datasets/phase2_aif_all5.csv)
 
 ---
 
-### EX-7 — FAL Federation Gains
+### TABLE II — Phase 3: Federated Learning
 
-**Protocol:** FedAvg, 10 Ego nodes, 10 communication rounds, NSL-KDD non-IID partition
+| Dataset | Mean Node Gain | Max Node Gain | DP ε (σ=1.0) | DP ε (σ=0.5) |
+|---------|---------------|--------------|--------------|--------------|
+| KDDCup99-SF | −0.022% | +0.150% | 51.2792 | 201.2792 |
+| NSL-KDD | −0.016% | +0.210% | 51.2792 | 201.2792 |
+| NetIntrusion | +0.057% | +0.160% | 51.2792 | 201.2792 |
+| CICIDS2017 | +0.010% | +0.150% | 51.2792 | 201.2792 |
+| UNSW-NB15 | +0.065% | +0.170% | 51.2792 | 201.2792 |
 
-| Ego Node | Isolated F1 | Federated F1 | Gain |
-|----------|-------------|--------------|------|
-| Careful_Planner | 0.9634 | 0.9912 | +0.0278 |
-| Social_Butterfly | 0.9598 | 0.9887 | +0.0289 |
-| Lone_Wolf | 0.9612 | 0.9901 | +0.0289 |
-| Night_Owl | 0.9621 | 0.9908 | +0.0287 |
-| Collaborator | 0.9589 | 0.9907 | +0.0318 |
-| Info_Seeker | 0.9578 | 0.9894 | +0.0316 |
-| Data_Handler | 0.9645 | 0.9918 | +0.0273 |
-| System_Admin | 0.9667 | 0.9965 | +0.0298 |
-| External_Comm | 0.9601 | 0.9889 | +0.0288 |
-| Multi_Tasker | 0.9623 | 0.9911 | +0.0288 |
-| **Mean** | **0.9617** | **0.9905** | **+0.0288** |
-
-- All 10/10 nodes improved by federation ✅  
-- DP guarantee: **(13.7792, 1×10⁻⁵)-DP**, σ=2.0 ✅
+> δ = 1×10⁻⁵ for all. Full per-node data: [`results/v3_all5_datasets/phase3_federation_all5.csv`](results/v3_all5_datasets/phase3_federation_all5.csv)
 
 ---
 
-### EX-8 — Behavioral Turing Test (BTT) v4
+### TABLE III — Phase 4: CDE Evasion Impact
 
-**Sessions:** 1,000 (10 Egos × 5 attacker profiles × 20 sessions)  
-**Target:** Mean fool rate ≥ 80%, all 10 archetypes ≥ 0.80
+| Dataset | Base F1 | Final DetF1 | Impact | Peak JSD | Mean DRS |
+|---------|---------|-------------|--------|----------|----------|
+| KDDCup99-SF | 0.9995 | 0.9538 | −0.0457 | 0.5222 | 0.7093 |
+| NSL-KDD | 0.9989 | 0.7222 | −0.2767 | 0.4413 | 0.6722 |
+| NetIntrusion | 0.9998 | 0.5506 | −0.4492 | 0.5518 | 0.6430 |
+| CICIDS2017 | 0.9979 | 0.2313 | **−0.7666** | 0.4132 | **0.9382** |
+| UNSW-NB15 | 0.9794 | 0.9774 | −0.0020 | 0.3749 | 0.5219 |
 
-```
-EX-8: Behavioral Turing Test v4
-   [OK] Careful_Planner    att=0.5887  fool=0.8227
-   [OK] Social_Butterfly   att=0.5518  fool=0.8965
-   [OK] Lone_Wolf          att=0.5644  fool=0.8712
-   [OK] Night_Owl          att=0.5608  fool=0.8784
-   [OK] Collaborator       att=0.5790  fool=0.8420
-   [OK] Info_Seeker        att=0.5200  fool=0.9600
-   [OK] Data_Handler       att=0.5311  fool=0.9377
-   [OK] System_Admin       att=0.5994  fool=0.8011
-   [OK] External_Comm      att=0.5429  fool=0.9141
-   [OK] Multi_Tasker       att=0.5306  fool=0.9389
-
-   Mean fool rate : 88.6%   (target >= 80%) ✅
-   Archetypes >= 0.80 : 10/10 ✅
-```
-
-| Archetype | Attractiveness | Fool Rate | Status |
-|-----------|---------------|-----------|--------|
-| Careful_Planner | 0.5887 | 82.3% | ✅ |
-| Social_Butterfly | 0.5518 | 89.7% | ✅ |
-| Lone_Wolf | 0.5644 | 87.1% | ✅ |
-| Night_Owl | 0.5608 | 87.8% | ✅ |
-| Collaborator | 0.5790 | 84.2% | ✅ |
-| Info_Seeker | 0.5200 | 96.0% | ✅ |
-| Data_Handler | 0.5311 | 93.8% | ✅ |
-| System_Admin | 0.5994 | 80.1% | ✅ |
-| External_Comm | 0.5429 | 91.4% | ✅ |
-| Multi_Tasker | 0.5306 | 93.9% | ✅ |
-| **Mean** | **0.5569** | **88.6%** | ✅ |
+> 15-round CDE evolution: [`results/v3_all5_datasets/phase4_cde_evolution_all5.csv`](results/v3_all5_datasets/phase4_cde_evolution_all5.csv)  
+> DRS per archetype × dataset: [`results/v3_all5_datasets/phase4_drs_scores_all5.csv`](results/v3_all5_datasets/phase4_drs_scores_all5.csv)
 
 ---
 
-### EX-9 — CDE Adversarial Resilience
+### TABLE IV — Phase 5: 5-Fold CV (LightGBM, Best per Dataset)
 
-**Experiments:** 40 A/B pairs (10 Egos × 4 attacker types), 15 mutation rounds  
-**Attacker mutations:** Evasive, Mimicry, Noise — JSD tracked across rounds
+| Dataset | F1 Mean | F1 Std | AUC Mean |
+|---------|---------|--------|----------|
+| KDDCup99-SF | 0.9995 | ±0.0001 | 0.9998 |
+| NSL-KDD | 0.9991 | ±0.0003 | 1.0000 |
+| NetIntrusion | 0.9993 | ±0.0002 | 1.0000 |
+| CICIDS2017 | 0.9979 | ±0.0003 | 0.9998 |
+| UNSW-NB15 | 0.9801 | ±0.0003 | 0.9980 |
 
-| Dataset | Baseline JSD | Post-CDE JSD | Gain |
-|---------|-------------|--------------|------|
-| KDDCup99-SF | 0.1823 | 0.2714 | +0.0891 |
-| NSL-KDD | 0.1756 | 0.2598 | +0.0842 |
-| UNSW-NB15 | 0.1634 | 0.2553 | +**0.0919** |
-| CIC-IDS2017 | 0.1701 | 0.2587 | +0.0886 |
-
-- All 40/40 A/B pairs statistically significant (KS-test p < 0.05) ✅  
-- CDE convergence: **Cycle 4** of 15 ✅  
-- Top SHAP driver: `recon_depth` (0.170) ✅  
-- False positive rate on real users: **0.00%** ✅
+> Full 3-model × 5-dataset CV: [`results/v3_all5_datasets/phase5_5fold_cv_all5.csv`](results/v3_all5_datasets/phase5_5fold_cv_all5.csv)
 
 ---
 
-### EX-10 / EX-11 / EX-12 / EX-13 — Ablation Study (All 5 Datasets)
+### TABLE V — Phase 1: 90-Day KL Consistency (10 Archetypes)
 
-**6-component ablation** — stepwise removal of framework components  
-**Metric:** Mean F1-Score (5-fold CV, LightGBM)
+| Archetype | KL Hour | KL DOW | KL Rcpt | KL Mean | Status |
+|-----------|---------|--------|---------|---------|--------|
+| Morning Bird | 0.0077 | 0.0509 | 0.0537 | 0.0374 | ✅ Strong |
+| Collaborator | 0.0119 | 0.0160 | 0.0115 | 0.0132 | ✅ Strong |
+| Balanced | 0.0371 | 0.0173 | 0.0078 | 0.0208 | ✅ Strong |
+| Workaholic | 0.0071 | 0.0766 | 0.0025 | 0.0288 | ✅ Strong |
+| Night Owl | 0.0393 | 0.0228 | 0.0093 | 0.0238 | ✅ Strong |
+| Tech Savvy | 0.0363 | 0.0438 | 0.0201 | 0.0334 | ✅ Strong |
+| Careful Planner | 0.0303 | 0.0119 | 0.0404 | 0.0275 | ✅ Strong |
+| Lone Wolf | 0.0402 | 0.0432 | 0.0075 | 0.0303 | ✅ Strong |
+| Workaholic_8 | 0.0318 | 0.0120 | 0.0014 | 0.0150 | ✅ Strong |
+| Social Butterfly | 0.0131 | 0.0271 | 0.0049 | 0.0150 | ✅ Strong |
 
-| Step | Components Active | KDDCup99-SF | NSL-KDD | UNSW-NB15 | CIC-IDS2017 | Mean |
-|------|-------------------|-------------|---------|-----------|-------------|------|
-| 1 | AIF only (baseline) | 0.8901 | 0.8834 | 0.8756 | 0.8812 | 0.8826 |
-| 2 | +PBI | 0.9112 | 0.9067 | 0.8998 | 0.9034 | 0.9053 |
-| 3 | +FAL | 0.9289 | 0.9241 | 0.9178 | 0.9213 | 0.9230 |
-| 4 | +DP | 0.9321 | 0.9276 | 0.9198 | 0.9244 | 0.9260 |
-| 5 | +CDE | 0.9445 | 0.9398 | 0.9321 | 0.9367 | 0.9383 |
-| 6 | **Full system** | **0.9471** | **0.9565** | **0.9561** | **0.9389** | **0.9497** |
-
-- Full system gain over AIF-only baseline: **+0.0671** mean F1 ✅  
-- Best single-dataset gain: **+0.0805** on UNSW-NB15 ✅  
-- Every component contributes positively across all 5 datasets ✅
-
----
-
-## ✅ Validated Paper Claims (28/28)
-
-| EX | Phase | Claim | Result | Status |
-|----|-------|-------|--------|--------|
-| EX-1 | FAL/DP | DP guarantee (σ=2.0) | ε=13.7792, δ=1e-5 | ✅ |
-| EX-2 | PBI | Hourly KL archetypes passing | 8/10 | ✅ |
-| EX-3 | PBI | Day-of-week KL archetypes passing | 9/10 | ✅ |
-| EX-4 | PBI | Recipient KL archetypes passing | 10/10 | ✅ |
-| EX-4 | PBI | Optimal archetypes | K=10 | ✅ |
-| EX-4 | PBI | Eligible real users (Enron) | 92 | ✅ |
-| EX-5 | AIF | F1 on KDDCup99-SF | 0.9471 | ✅ |
-| EX-5 | AIF | AUC-ROC on KDDCup99-SF | 0.9921 | ✅ |
-| EX-6 | AIF | F1 on NSL-KDD | 0.9565 | ✅ |
-| EX-6 | AIF | F1 on UNSW-NB15 | 0.9412 | ✅ |
-| EX-6 | AIF | F1 on CIC-IDS2017 | 0.9389 | ✅ |
-| EX-7 | FAL | Mean federated F1 | 0.9905 | ✅ |
-| EX-7 | FAL | FL mean gain | +0.0288 | ✅ |
-| EX-7 | FAL | Nodes improved | 10/10 | ✅ |
-| EX-8 | BTT | Mean fool rate | **88.6%** | ✅ |
-| EX-8 | BTT | Archetypes ≥ 0.80 | **10/10** | ✅ |
-| EX-8 | BTT | Info_Seeker (best) | 96.0% | ✅ |
-| EX-9 | CDE | A/B pairs significant | 40/40 | ✅ |
-| EX-9 | CDE | Best JSD gain | +0.0919 (UNSW) | ✅ |
-| EX-9 | CDE | CDE convergence | Cycle 4 | ✅ |
-| EX-9 | CDE | FPR real users | 0.00% | ✅ |
-| EX-9 | CDE | Top SHAP driver | recon_depth 0.170 | ✅ |
-| EX-10–13 | Ablation | Full system vs baseline | +0.0671 mean F1 | ✅ |
-| EX-10–13 | Ablation | Best dataset gain | +0.0805 UNSW | ✅ |
-| EX-10–13 | Ablation | All components positive | Yes | ✅ |
-| System | Efficiency | RAM/node | ~0.81 MB | ✅ |
-| System | Efficiency | GPU required | No | ✅ |
-| System | Privacy | Formal DP guarantee | Yes (EX-1) | ✅ |
+> **Overall Mean KL = 0.0245** — All 10/10 archetypes below threshold 0.30 ✅  
+> **Claim SUPPORTED:** Behavioral identity persists across 90-day observation window  
+> Source: [`results/v3_all5_datasets/phase1_kl_90day_fixed.csv`](results/v3_all5_datasets/phase1_kl_90day_fixed.csv)
 
 ---
 
-## ⚙️ Installation
+### TABLE VI — Phase 5: Ablation Study (NSL-KDD)
+
+| Component | F1 | AUC | ΔF1 |
+|-----------|----|-----|-----|
+| W/o Sentinel (Legacy IDS) | 0.9744 | 0.9987 | — |
+| + PBI Behavioral Context | 0.9989 | 1.0000 | +0.0245 |
+| + AIF 42-Feature Profiling | 0.9989 | 1.0000 | +0.0245 |
+| + FAL Federation (10 nodes) | 0.9990 | 1.0000 | +0.0246 |
+| + CDE Evasion-Aware | 0.9990 | 1.0000 | +0.0246 |
+| **Full Pipeline (all components)** | **0.9988** | **1.0000** | **+0.0244** |
+
+> PBI alone delivers the largest single jump (+0.0245 F1 over Legacy IDS baseline).  
+> Source: [`results/v3_all5_datasets/phase5_ablation_nslkdd.csv`](results/v3_all5_datasets/phase5_ablation_nslkdd.csv)
+
+---
+
+### Mirror Defense (Phase 5)
+
+| Dataset | Base F1 | Mirror F1 | Δ |
+|---------|---------|-----------|---|
+| KDDCup99-SF | 0.9995 | 0.9996 | +0.0001 |
+| NSL-KDD | 0.9989 | 0.9988 | −0.0001 |
+| NetIntrusion | 0.9998 | 0.9996 | −0.0002 |
+| CICIDS2017 | 0.9979 | 0.9978 | −0.0001 |
+| UNSW-NB15 | 0.9794 | 0.9794 | +0.0001 |
+
+> Mirror Defense has negligible performance impact (max Δ = ±0.0002) while providing pre-click spear-phishing interception.  
+> Source: [`results/v3_all5_datasets/phase5_mirror_defense_all5.csv`](results/v3_all5_datasets/phase5_mirror_defense_all5.csv)
+
+---
+
+## ⚙️ Quick Start
 
 ```bash
 git clone https://github.com/hamidborkot/sentinel-ego.git
@@ -298,17 +219,16 @@ cd sentinel-ego
 pip install -r requirements.txt
 ```
 
-**Quick start (Google Colab):**
-```
-Open any notebook in notebooks/ and run all cells top to bottom.
-No GPU required. All phases run on CPU in Google Colab free tier.
+**Run complete pipeline (Google Colab):**
+```python
+# Open notebooks/pipeline_phases1to5_all5datasets.py in Colab
+# Run each CELL section in order: A → B → C → D → E → F → G → H
+# No GPU required. All phases run on CPU in Colab free tier.
 ```
 
 ---
 
 ## 📖 Citation
-
-If you use this work, please cite:
 
 ```bibtex
 @article{tulla2026sentinel,
@@ -329,4 +249,4 @@ MIT License — see [LICENSE](LICENSE)
 
 ---
 
-*Last updated: May 2026 — All 13 experiments (EX-1 to EX-13) complete. 28/28 paper claims validated.*
+*Last updated: May 2026 — Full pipeline (Phase 1–5) complete across all 5 datasets. All 6 paper tables validated. 8 publication-ready figures generated.*
