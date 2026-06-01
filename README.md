@@ -1,7 +1,6 @@
 # 🛡️ The Sentinel Ego
 
-> **A Federated Adversarial Deception Framework for Insider Threat Detection**  
-> IEEE Transactions on Information Forensics and Security (TIFS) — 2026 Submission
+> **A Federated Adversarial Deception Framework for Insider Threat Detection**
 
 [![Python](https://img.shields.io/badge/Python-3.10%2B-blue?logo=python)](https://python.org)
 [![Platform](https://img.shields.io/badge/Platform-CPU--Only%20%7C%20Google%20Colab-orange?logo=googlecolab)](https://colab.research.google.com)
@@ -235,7 +234,7 @@ pip install -r requirements.txt
   title   = {The Sentinel Ego: A Federated Adversarial Deception Framework
              for Insider Threat Detection},
   author  = {Tulla, Md. Hamid Borkot},
-  journal = {IEEE Transactions on Information Forensics and Security},
+  journal = {Anonymous},
   year    = {2026},
   note    = {Under Review}
 }
