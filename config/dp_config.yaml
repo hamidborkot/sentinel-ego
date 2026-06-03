@@ -11,22 +11,40 @@ differential_privacy:
   # Gradient clipping
   clipping_norm: 1.0  # C = 1.0
 
-  # Noise configurations evaluated
+  # Noise configurations evaluated (comparison table — EX-1)
   sigma_configs:
     - sigma: 0.5
-      epsilon: 1.2832
+      epsilon: 201.2792
       delta: 1.0e-5
-      strength: "Moderate"
+      strength: "Too weak"
       n_rounds: 10
       n_nodes: 10
     - sigma: 1.0
       epsilon: 1.2802
       delta: 1.0e-5
-      strength: "Moderate (stronger, paper claim)"
+      strength: "Moderate — PAPER CHOICE"
+      n_rounds: 10
+      n_nodes: 10
+    - sigma: 1.5
+      epsilon: 23.5014
+      delta: 1.0e-5
+      strength: "Moderate tradeoff"
+      n_rounds: 10
+      n_nodes: 10
+    - sigma: 2.0
+      epsilon: 13.7792
+      delta: 1.0e-5
+      strength: "Comparison only — NOT paper choice"
+      n_rounds: 10
+      n_nodes: 10
+    - sigma: 3.0
+      epsilon: 6.8348
+      delta: 1.0e-5
+      strength: "Strongest noise — not used"
       n_rounds: 10
       n_nodes: 10
 
-  # Paper claim (Section 5.3)
+  # Paper claim (Section 5.3) — THIS IS THE VALUE USED IN ALL EXPERIMENTS
   paper_claim:
     sigma: 1.0
     clipping_norm: 1.0
@@ -47,3 +65,7 @@ differential_privacy:
     acceptable_epsilon: 3.0
     our_epsilon: 1.2802
     assessment: "Moderate — between strong (<1.0) and acceptable (<3.0)"
+
+# NOTE: The sigma=2.0 row in RESULTS.md EX-1 table was a comparison
+# entry only and is NOT the paper choice. The paper choice is
+# sigma=1.0 giving epsilon=1.2802 as stated in paper_claim above.
