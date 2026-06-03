@@ -24,8 +24,6 @@ The **Sentinel Ego** is a novel cybersecurity framework of ten persistent synthe
 
 **Full pipeline validated on 5 real benchmark datasets** — CPU-only, Google Colab compatible.
 
-> ⚠️ **Data Note:** All numbers verified from `/results/v3_all5_datasets/` CSVs. Enron used **only** in Phase 1 (PBI). CERT v4.2 is **not** used.
-
 ---
 
 ## 🗂️ Repository Structure
@@ -153,7 +151,7 @@ Source: [`results/v3_all5_datasets/phase3_federation_all5.csv`](results/v3_all5_
 | CICIDS2017 | 0.9845 | 0.9846 | +0.0001 | +0.0015 |
 | UNSW-NB15 | 0.9685 | 0.9692 | +0.0006 | +0.0017 |
 
-> ⚠️ Mean federation gains are marginal (−0.0002 to +0.0006). This is expected — isolated models are already high-performing. The framework's value is **privacy-preserving collective inference**, not raw accuracy gain.
+> ⚠️ Mean federation gains are marginal (−0.0002 to +0.0006). This is expected — isolated models are already high-performing. The framework's value is **privacy-preserving collective inference**.
 
 ---
 
