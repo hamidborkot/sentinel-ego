@@ -1,0 +1,5 @@
+Config,F1_mean,F1_std,Delta_vs_Isolated,Gap_Closed_pct
+Isolated,0.0457,0.0158,0.0,0.0
+Plain-Fed,0.7699,0.0164,0.7242,95.8
+DP-FedProto,0.4812,0.0617,0.4355,57.6
+Global,0.8013,0.0165,0.7556,100.0

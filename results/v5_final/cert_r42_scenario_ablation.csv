@@ -1,0 +1,6 @@
+Scenario,Isolated_F1,DPFedProto_F1,Delta
+S1-DataTheft,0.0151,0.0842,0.0691
+S2-USBSpy,0.0598,0.1224,0.0626
+S3-JobSearch,0.0,0.2938,0.2938
+S4-Fraud,0.0132,0.2746,0.2614
+S5-Saboteur,0.0899,0.1445,0.0546
