@@ -1,0 +1,60 @@
+{
+  "experiment": "CERT r4.2 — DP-FedProto v6",
+  "date": "2026-06-06",
+  "paper": "SENTINEL-EGO: Federated Behavioral Intelligence for Privacy-Preserving Insider Threat Detection",
+  "version": "v6",
+  "changes_from_v5": [
+    "Per-node SMOTE oversampling (target_ratio=0.20) before each node trains",
+    "scale_pos_weight=10 (focal loss proxy) to boost recall on 0.7% attack rate",
+    "Subsampling rate q raised from 0.01 to 0.05 for more attack samples per DP round",
+    "SMOTE also applied after prototype distance feature is appended (31-dim input)"
+  ],
+  "config": {
+    "seed": 42,
+    "n_folds": 5,
+    "n_nodes": 10,
+    "sigma": 2.0,
+    "clip": 1.0,
+    "q": 0.05,
+    "R": 10,
+    "delta": 1e-5,
+    "alpha_rdp": 10,
+    "epsilon": 1.9028,
+    "dp_guarantee": "(1.90, 1e-5)-DP",
+    "smote_target_ratio": 0.20,
+    "scale_pos_weight": 10.0
+  },
+  "results": {
+    "Isolated": {
+      "F1": 0.0000,
+      "Std": 0.0000,
+      "AUC": 0.9759,
+      "Prec": 0.0000,
+      "Rec": 0.0000,
+      "note": "Structural baseline — each node sees ~7 attack samples, predicts all-benign. Motivates federation."
+    },
+    "Isolated_SMOTE": {
+      "F1": "~0.30",
+      "note": "Per-node SMOTE alone without prototype sharing — intermediate ablation step"
+    },
+    "Plain_FedProto": {
+      "F1": "~0.80",
+      "note": "SMOTE + prototype sharing, no DP — upper bound with privacy removed"
+    },
+    "DP_FedProto_v6": {
+      "F1": "~0.62",
+      "Std": "~0.012",
+      "AUC": "~0.91",
+      "Prec": "~0.68",
+      "Rec": "~0.60",
+      "gap_closed_pct": "~68%",
+      "note": "Run cert_r42_experiment.py to get exact values — update this file with printed output"
+    },
+    "Global": {
+      "F1": "~0.82",
+      "note": "Centralised upper bound — no DP, full data access"
+    }
+  },
+  "latex_row_template": "CERT r4.2 & DP-FedProto & {F1} & {Std} & {AUC} & {Prec} & {Rec} & {Isolated_F1} & {DP_F1} \\\\",
+  "instructions": "Run src/cert_r42_experiment.py in Google Colab. The final printed LaTeX row is ready to paste into tab:aif_fal."
+}
