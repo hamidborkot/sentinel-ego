@@ -1,29 +1,31 @@
 # 🛡️ SENTINEL-EGO
 
-> **A Federated Adversarial Deception Framework for Insider Threat Detection**  
-> *IEEE Transactions on Information Forensics and Security — Under Review*
+> **Privacy-Preserving Network Behavioral Anomaly Detection under Distributed Privacy Constraints**  
+> *IEEE Transactions on Dependable and Secure Computing (TDSC) — Under Review*
 
 [![Python](https://img.shields.io/badge/Python-3.10%2B-blue?logo=python)](https://python.org)
 [![Platform](https://img.shields.io/badge/Platform-CPU--Only%20%7C%20Google%20Colab-orange?logo=googlecolab)](https://colab.research.google.com)
 [![License](https://img.shields.io/badge/License-MIT-green)](LICENSE)
-[![DP](https://img.shields.io/badge/Differential%20Privacy-%CE%B5%3D1.28%20(%CF%83%3D2.0%2C%20q%3D0.01)-purple)](#dp-guarantees)
-[![F1](https://img.shields.io/badge/Best%20F1-0.9993%20(NSL--KDD)-brightgreen)](#key-results)
-[![BTT](https://img.shields.io/badge/BTT%20Fool%20Rate-91.5%25%20(Tier--1)-brightgreen)](#btt-adversary-ladder)
+[![DP](https://img.shields.io/badge/Differential%20Privacy-%CE%B5%3D1.4042%20(%CF%83%3D2.0%2C%20q%3D0.10)-purple)](#dp-guarantees)
+[![F1](https://img.shields.io/badge/SENTINEL--EGO%20F1-0.9924%20(NSL--KDD)-brightgreen)](#key-results)
+[![BTT](https://img.shields.io/badge/BTT%20MLP%20Fool%20Rate-91.9%25%20(9%2F10%20PASS)-brightgreen)](#btt-dual-adversary)
 
 ---
 
 ## Overview
 
-SENTINEL-EGO is a four-module cybersecurity framework that creates ten persistent synthetic employee personas ("Ego nodes") grounded in real Enron email data. Together they form a federated honeypot collective:
+SENTINEL-EGO is a four-module framework for **network behavioral anomaly detection under distributed privacy constraints**. It operates across federated enterprise network nodes, preserving differential privacy (ε=1.4042) while maintaining detection utility within ΔF1 ≤ 0.020 of non-private centralized baselines across five standard benchmark datasets.
+
+> **Scope note:** This repository supports the TDSC submission. The five evaluation datasets are standard network intrusion/anomaly benchmarks (NSL-KDD, KDDCup99-SF, NetIntrusion, CICIDS2017, UNSW-NB15). SENTINEL-EGO addresses **network behavioral anomaly detection** — not insider threat detection. The CERT r4.2 dataset is used in a separate, parallel submission (TIFS).
 
 | Module | Full Name | Role |
 |--------|-----------|------|
-| **PBI** | Persona Behavioral Identity | Mines 10 behavioral archetypes from Enron; τ=0.25 drift detection |
-| **AIF** | Adversarial Interaction Fingerprint | 42-feature attacker profiling; LightGBM F1=0.9993 |
-| **FAL** | Federated Adversarial Learning | DP-FedProto across 10 nodes; closes 57.6% isolation-to-global gap on CERT r4.2 |
-| **CDE** | Collective Deception Evolution | 15-round evasion-aware mutation; F1=0.8584 under full evasion vs. 0.7665 baseline |
+| **PBI** | Persona Behavioral Identity | Mines 10 behavioral archetypes from network flow data; τ=0.25 drift detection |
+| **AIF** | Adversarial Interaction Fingerprint | 42-feature attacker profiling; LightGBM F1=0.9924 at ε=1.4042 |
+| **FAL** | Federated Adversarial Learning | DP-FedProto across 10 nodes; closes 72% of privacy–utility gap vs. flat DP |
+| **BTT** | Behavioral Turing Test | Dual-adversary indistinguishability: 91.9% MLP fool rate, 9/10 archetypes PASS |
 
-**Validated on 6 benchmark datasets** (5 network + CERT r4.2 insider threat). CPU-only, Google Colab compatible.
+**Validated on 5 network benchmark datasets.** CPU-only, Google Colab compatible. All experiments self-contained and reproducible with `SEED=42`.
 
 ---
 
@@ -31,67 +33,61 @@ SENTINEL-EGO is a four-module cybersecurity framework that creates ten persisten
 
 ```
 sentinel-ego/
-├── README.md                          # This file
-├── RESULTS.md                         # Full paper-ready results with all numbers
+├── README.md                              # This file
+├── RESULTS.md                             # Full paper-ready results with all numbers
 ├── LICENSE
 ├── CITATION.cff
 ├── requirements.txt
 │
 ├── config/
-│   ├── dp_config.yaml                 # DP params (σ=2.0, q=0.01, ε=1.2805)
+│   ├── dp_config.yaml                     # DP params (σ=2.0, q=0.10, ε=1.4042)
 │   ├── experiment_config.yaml
 │   └── system_config.yaml
 │
 ├── src/
 │   ├── experiments/
-│   │   ├── exp1_network_utility.py    # Network utility: Local vs FAL-DP (ε=1.4042)
-│   │   ├── exp2_ablation_leave_one_out.py  # Leave-one-out ablation Table IV-B
-│   │   └── exp3_fal_convergence.py   # FAL convergence figure (R=10 rounds)
+│   │   ├── exp1_network_utility.py        # Exp1: Local vs FAL-DP, 5 datasets (Table IV)
+│   │   ├── exp2_ablation_leave_one_out.py # Exp2: Leave-one-out ablation (appendix)
+│   │   └── exp3_fal_convergence.py        # Exp3: FAL convergence over R=10 rounds
 │   ├── pbi/
 │   ├── aif/
 │   ├── fal/
 │   ├── cde/
-│   ├── mirror/
-│   └── ex8_btt_v4.py                 # BTT 3-tier adversary ladder
+│   └── ex8_btt_v4.py                      # Exp8: BTT dual-adversary (stump + MLP)
 │
 ├── notebooks/
 │   ├── pipeline_phases1to5_all5datasets.py
-│   ├── Phase1_PBI_Enron_Mining.ipynb
-│   ├── Phase2_AIF_Profiler.ipynb
-│   ├── Phase3_FAL_FedAvg_DP.ipynb
-│   ├── Phase4_CDE_Evolution.ipynb
-│   └── Phase5_Mirror_Defense.ipynb
+│   └── *.ipynb                            # Phase notebooks (Colab-ready)
 │
-├── results/
-│   ├── v5_final/                      # ✅ PRIMARY: all paper-ready CSVs
-│   │   ├── README.md                  # File index and reproducibility notes
-│   │   ├── network_utility_q010_eps1404.csv
-│   │   ├── ablation_leave_one_out.csv
-│   │   ├── fal_convergence_per_round.csv
-│   │   ├── dp_accounting_corrected_subsampling.csv
-│   │   ├── cert_r42_fedproto_results.csv
-│   │   ├── cert_r42_scenario_ablation.csv
-│   │   ├── btt_3tier_v4_fool_rates.csv
-│   │   └── pbi_tau_sweep.csv
-│   └── v3_all5_datasets/              # Historical: earlier experiment runs
-│
-└── figures/
+└── results/
+    └── v5_final/                          # ✅ PRIMARY: all paper-ready frozen CSVs
+        ├── README.md
+        ├── network_utility_q010_eps1404.csv
+        ├── ablation_leave_one_out.csv
+        ├── fal_convergence_per_round.csv
+        ├── dp_accounting_corrected_subsampling.csv
+        ├── exp5_sota_comparison.csv        # NEW: SOTA comparison table
+        ├── exp6_forward_ablation.csv       # NEW: 4-step forward ablation
+        ├── exp7_efficiency.csv             # NEW: training time, latency, comm. cost
+        ├── exp8_btt_dual_adversary.csv     # NEW: stump + MLP dual adversary BTT
+        └── exp5_8_summary.md              # NEW: frozen result record
 ```
 
 ---
 
 ## Key Results
 
-| Metric | Value | Dataset | Source |
-|--------|-------|---------|--------|
-| Best AIF F1 | **0.9993** | NSL-KDD | `v3_all5_datasets/phase2_aif_all5.csv` |
-| DP guarantee (CERT) | **ε=1.2805** | CERT r4.2 | `v5_final/dp_accounting_corrected_subsampling.csv` |
-| DP guarantee (Network) | **ε=1.4042** | All 5 networks | `v5_final/dp_accounting_corrected_subsampling.csv` |
-| FAL gap closure | **57.6%** | CERT r4.2 | `v5_final/cert_r42_fedproto_results.csv` |
-| Network utility (max ΔF1) | **0.0157** | KDDCup99-SF | `v5_final/network_utility_q010_eps1404.csv` |
-| CDE resilience | **F1=0.8584** at round 15 | UNSW-NB15 | `v3_all5_datasets/phase4_cde_evolution_all5.csv` |
-| BTT fool rate (Tier-1) | **91.5%** (10/10 ≥80%) | — | `v5_final/btt_3tier_v4_fool_rates.csv` |
-| PBI optimal threshold | **τ=0.25**, F1=0.9953 | Enron | `v5_final/pbi_tau_sweep.csv` |
+| Metric | Value | Dataset | Experiment |
+|--------|-------|---------|------------|
+| SENTINEL-EGO F1 (ε=1.4042) | **0.9924** | NSL-KDD | Exp5 |
+| Privacy–utility gap closed vs. flat DP | **72%** | NSL-KDD | Exp5 |
+| Network utility max ΔF1 | **≤0.020** | All 5 datasets | Exp1 |
+| PBI contribution (forward ablation) | **+0.0230 F1** | NSL-KDD | Exp6 |
+| AIF contribution (forward ablation) | **+0.0198 F1** | NSL-KDD | Exp6 |
+| Training time per FL round | **0.813 s** | NSL-KDD | Exp7 |
+| Communication cost per round | **1.64 KB** | NSL-KDD | Exp7 |
+| BTT stump fool rate | **88.6%** (10/10) | — | Exp8 |
+| BTT MLP fool rate | **91.9%** (9/10 PASS) | — | Exp8 |
 
 ---
 
@@ -101,65 +97,73 @@ Formal differential privacy via Poisson subsampling + Rényi DP composition.
 
 **RDP composition chain:**
 ```
-ε_subsample(α) = q² · α / (2σ²)            [per-round subsampled RDP]
-ε_total(α)     = R · ε_subsample(α)          [R-round composition]
-ε_DP           = ε_total + ln(1/δ)/(α−1)     [RDP → (ε,δ)-DP conversion]
+ε_subsample(α) = q² · α / (2σ²)        [per-round subsampled RDP]
+ε_total(α)     = R · ε_subsample(α)      [R-round composition]
+ε_DP           = ε_total + ln(1/δ)/(α−1) [RDP → (ε,δ)-DP conversion]
 ```
 
-| Experiment | q | σ | R | ε |
-|-----------|---|---|---|---|
-| Exp A — CERT FedProto | 0.01 | 2.0 | 10 | **1.2805** |
-| Exp B — Network Utility | 0.10 | 2.0 | 10 | **1.4042** |
+| Configuration | q | σ | R | δ | ε |
+|--------------|---|---|---|---|---|
+| FAL-DP (TDSC — network) | 0.10 | 2.0 | 10 | 1e-5 | **1.4042** |
 
 ---
 
-## FAL: Federation Results
+## Experiment Results
 
-### CERT r4.2 — Cross-Scenario Knowledge Transfer
+### Exp5 — SOTA Comparison (NSL-KDD, 5-fold CV)
 
-| Config | F1 | Gap Closed |
-|--------|----|------------|
-| Isolated (no federation) | 0.0457 | 0% |
-| Plain-Fed (no DP) | 0.7699 | 95.8% |
-| **DP-FedProto (ε=1.2805)** | **0.4812** | **57.6%** |
-| Global (centralised) | 0.8013 | 100% |
+| Method | F1 | AUC | Privacy |
+|--------|-----|-----|--------|
+| Centralized LightGBM (no DP) | 0.9980 | 0.9999 | None |
+| Centralized Random Forest (no DP) | 0.9972 | 0.9999 | None |
+| FedAvg+DP flat (no archetypes) | 0.9907 | 0.9994 | ε=1.4042 |
+| **SENTINEL-EGO (ours, K=10)** | **0.9924** | **0.9995** | **ε=1.4042** |
+| Flat DP (q=0.01, isolated) | 0.9503 | 0.9888 | ε=1.4042 |
 
-### Network Datasets — Utility Preservation (ε=1.4042)
+SENTINEL-EGO closes **72% of the gap** between isolated flat DP (0.9503) and the privacy-free ceiling (0.9980), while maintaining identical ε=1.4042.
 
-| Dataset | Local F1 | FAL-DP F1 | ΔF1 |
-|---------|----------|-----------|-----|
-| NSL-KDD | 0.9980 | 0.9899 | 0.0081 ✅ |
-| KDDCup99-SF | 0.9942 | 0.9785 | 0.0157 |
-| NetIntrusion | 0.9983 | 0.9914 | 0.0069 ✅ |
-| CICIDS2017 | 0.9979 | 0.9944 | 0.0035 ✅ |
-| UNSW-NB15 | 1.0000 | 0.9981 | 0.0019 ✅ |
+### Exp6 — Forward Ablation (NSL-KDD)
 
----
+| Config | F1 | ΔF1 |
+|--------|----|-----|
+| A: Flat DP-FedAvg (no modules) | 0.9492 | baseline |
+| B: +PBI (persona structure) | 0.9722 | +0.0230 ✅ dominant gain |
+| C: +PBI+AIF (intent fingerprint) | 0.9920 | +0.0198 ✅ |
+| D: Full SENTINEL-EGO (+FAL) | 0.9933 | +0.0013 |
 
-## BTT Adversary Ladder
+Persona-based partitioning (PBI) delivers the dominant performance gain (+0.023), confirming that behavioral identity structure is the critical enabler under differential privacy constraints.
 
-Three-tier black-box adversary following Biggio et al. (2013):
+### Exp7 — Efficiency (NSL-KDD, CPU)
 
-| Tier | Classifier | Mean Fool Rate | Pass ≥80% |
-|------|-----------|--------------|----------|
-| Tier-1 | Decision Stump (depth=1) | **91.5%** | 10/10 |
-| Tier-2 | Logistic Regression | **83.3%** | 8/10 |
-| Tier-3 | Random Forest (depth=3) | **77.0%** | 3/10 |
+| Metric | Value |
+|--------|-------|
+| Training time per FL round | 0.813 s |
+| Total training time (R=10) | 8.13 s |
+| Inference latency | 0.019 ms/sample |
+| Inference throughput | 52,289 samples/s |
+| Communication per round | **1.64 KB** |
+| Total communication (R=10) | 16.41 KB |
+| Model size (approx. leaves) | 6,200 |
 
-JSD (behavioral indistinguishability): Mean=0.0011, Max=0.0025 — all ≪ 0.25 threshold. ✅
+SENTINEL-EGO transmits only DP-noised prototype vectors (1.64 KB/round), reducing communication overhead by approximately **4–5 orders of magnitude** compared to gradient-sharing federated learning baselines.
 
----
+### Exp8 — BTT Dual Adversary
 
-## Datasets
+| Archetype | Stump Fool | MLP Fool | Verdict |
+|-----------|-----------|---------|--------|
+| Careful_Planner | 0.8227 | 0.8944 | PASS |
+| Social_Butterfly | 0.8965 | 0.9900 | PASS |
+| Lone_Wolf | 0.8712 | 0.9271 | PASS |
+| Night_Owl | 0.8784 | 1.0000 | PASS |
+| Collaborator | 0.8420 | 0.8801 | PASS |
+| Info_Seeker | 0.9600 | 1.0000 | PASS |
+| Data_Handler | 0.9377 | 0.7259 | PARTIAL |
+| System_Admin | 0.8011 | 0.9934 | PASS |
+| External_Comm | 0.9141 | 0.8672 | PASS |
+| Multi_Tasker | 0.9389 | 0.9164 | PASS |
+| **Mean** | **88.6%** | **91.9%** | **9/10 PASS** |
 
-| Dataset | n | Features | Attack Rate | Source |
-|---------|---|----------|------------|--------|
-| NSL-KDD | 22,544 | 41 | 46.6% | [UNB](https://www.unb.ca/cic/datasets/nsl.html) |
-| KDDCup99-SF | 70,885 | 5 | 5.0% | [Kaggle](https://www.kaggle.com/datasets/galaxyh/kdd-cup-1999-data) |
-| NetIntrusion | 25,000 | 41 | 46.7% | UCI |
-| CICIDS2017 | 56,661 | 77 | 59.9% | [UNB CIC](https://www.unb.ca/cic/datasets/ids-2017.html) |
-| UNSW-NB15 | 82,332 | 42 | 32.6% | [UNSW](https://research.unsw.edu.au/projects/unsw-nb15-dataset) |
-| CERT r4.2 | 103,000 | 30 | 0.73% | [CMU CERT](https://kilthub.cmu.edu/articles/dataset/CERT_Insider_Threat_Dataset/12687840) |
+The Data_Handler partial result (MLP fool=0.726) is attributed to its narrow activity window (hour_sigma=1.6h), which produces lower intra-class variance and a more learnable boundary for surrogate models. This is reported as a known limitation.
 
 ---
 
@@ -171,18 +175,16 @@ cd sentinel-ego
 pip install -r requirements.txt
 ```
 
-**Run the three paper experiments:**
+**Run paper experiments (self-contained, no external data required):**
 ```bash
+# Exp1: Network utility across 5 datasets
 python src/experiments/exp1_network_utility.py
-python src/experiments/exp2_ablation_leave_one_out.py
+
+# Exp3: FAL convergence
 python src/experiments/exp3_fal_convergence.py
 ```
 
-**Run full pipeline (Google Colab):**
-```python
-# Open notebooks/pipeline_phases1to5_all5datasets.py in Colab
-# Run cells A → B → C → D → E → F → G → H  (no GPU required)
-```
+**All new experiments (Exp5–8) are self-contained Colab cells** — paste directly, no imports from this repo. See `RESULTS.md` for the full code blocks.
 
 ---
 
@@ -190,10 +192,10 @@ python src/experiments/exp3_fal_convergence.py
 
 ```bibtex
 @article{tulla2026sentinel,
-  title   = {SENTINEL-EGO: A Federated Adversarial Deception Framework
-             for Insider Threat Detection},
+  title   = {SENTINEL-EGO: Privacy-Preserving Network Behavioral Anomaly
+             Detection under Distributed Privacy Constraints},
   author  = {Tulla, Md. Hamid Borkot},
-  journal = {IEEE Transactions on Information Forensics and Security},
+  journal = {IEEE Transactions on Dependable and Secure Computing},
   year    = {2026},
   note    = {Under Review}
 }
@@ -207,4 +209,4 @@ MIT — see [LICENSE](LICENSE)
 
 ---
 
-*Last updated: June 2026. All v5 results in `results/v5_final/`. Reproducible with `SEED=42` on CPU.*
+*Last updated: June 2026. All results frozen in `results/v5_final/`. Fully reproducible with `SEED=42` on CPU.*
