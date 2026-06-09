@@ -1,9 +1,9 @@
 Metric,Value
-Training time per round (s),0.813
-Total training time (R=10 rounds s),8.13
-Inference latency per sample (ms),0.0191
-Inference throughput (samples/s),52289
-Gradient/prototype size per node (KB),0.16
+Training time per round (s),0.187
+Total training time (R=10 rounds s),1.87
+Inference latency per sample (ms),0.0086
+Inference throughput (samples/s),115911
+Prototype size per node (KB),0.16
 Communication per round (KB),1.64
-Total communication (R=10 KB),16.41
-Model parameter count (approx. leaves),6200
+Total communication R=10 (KB),16.41
+LightGBM trees,200

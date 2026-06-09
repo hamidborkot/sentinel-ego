@@ -1,6 +1,6 @@
 Method,Privacy,F1,F1_std,AUC,Precision,Recall
-Flat DP-FedAvg (q=0.01 isolated),ε=1.4042,0.9506,0.0131,0.9909,,
-Centralized LightGBM (no DP),None,0.9980,0.0006,0.9999,,
-Centralized Random Forest (no DP),None,0.9972,0.0008,0.9999,,
-FedAvg+DP flat (no archetypes),ε=1.4042,0.9900,0.0017,0.9995,,
-SENTINEL-EGO (ours K=10),ε=1.4042,0.9924,0.0016,0.9995,,
+Flat DP-FedAvg (q=0.01),ε=1.4042,0.9494,0.0133,0.9902,0.9611,0.9389
+Centralized LightGBM (no DP),None,0.998,0.0006,0.9999,0.9986,0.9975
+Centralized RF (no DP),None,0.9972,0.0008,0.9999,0.9982,0.9963
+FedAvg+DP (no archetypes),ε=1.4042,0.9902,0.0019,0.9994,0.9914,0.989
+SENTINEL-EGO (ours K=10),ε=1.4042,0.9919,0.0022,0.9995,0.9935,0.9903

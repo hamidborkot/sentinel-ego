@@ -1,0 +1,5 @@
+Model,Setting,F1,ASR
+Flat DP-FedAvg,Clean,0.9848,0.03
+Flat DP-FedAvg,Adversarial,0.1273,0.932
+SENTINEL-EGO,Clean,0.996,0.008
+SENTINEL-EGO,Adversarial,0.8519,0.258
