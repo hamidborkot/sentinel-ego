@@ -1,0 +1,6 @@
+Dataset,eps,Local_F1,FALDP_F1,DeltaF1,Verdict
+NSL-KDD,1.4042,0.998,0.9911,-0.0069,preserved
+KDDCup99-SF,1.4042,0.9942,0.9786,-0.0156,small
+NetIntrusion,1.4042,0.9983,0.9919,-0.0064,preserved
+CICIDS2017,1.4042,0.998,0.9945,-0.0035,preserved
+UNSW-NB15,1.4042,1.0,0.9983,-0.0017,preserved

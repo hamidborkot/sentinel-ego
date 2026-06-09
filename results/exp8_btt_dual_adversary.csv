@@ -1,0 +1,11 @@
+Archetype,Stump_Fool,MLP_Fool,Verdict
+Careful_Planner,0.8227,0.8944,PASS
+Social_Butterfly,0.8965,0.99,PASS
+Lone_Wolf,0.8712,0.9271,PASS
+Night_Owl,0.8784,1.0,PASS
+Collaborator,0.842,0.8801,PASS
+Info_Seeker,0.96,1.0,PASS
+Data_Handler,0.9377,0.7259,PARTIAL
+System_Admin,0.8011,0.9934,PASS
+External_Comm,0.9141,0.8672,PASS
+Multi_Tasker,0.9389,0.9164,PASS
