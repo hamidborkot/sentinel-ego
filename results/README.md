@@ -1,54 +1,19 @@
-# Experiment Results
+# Results
 
-This directory contains all experiment outputs for **The Sentinel Ego** (IEEE TIFS 2026).
+This folder contains the **frozen output CSVs** for all experiments in the paper.
 
-## Directory Structure
+> **FROZEN after paper submission.** Do not modify these files unless re-running experiments and updating the paper tables simultaneously.
 
-```
-results/
-├── v2_cicids_unsw/                    ← Runner v2: CICIDS2017 + UNSW-NB15 only
-│   ├── phase2_aif_cicids2017.md
-│   ├── phase2_aif_unsw_nb15.md
-│   ├── phase3_fal_cicids2017.md
-│   ├── phase3_fal_unsw_nb15.md
-│   ├── phase4_cde_cicids2017.md
-│   ├── phase4_cde_unsw_nb15.md
-│   ├── phase5_ablation_cicids2017.md
-│   ├── phase5_ablation_unsw_nb15.md
-│   └── paper_tables_v2.md
-│
-├── v3_all5_datasets/                  ← Runner v3: All 5 datasets (FINAL)
-│   ├── phase1_pbi_kl_divergence.md
-│   ├── phase2_aif_all_datasets.md
-│   ├── phase3_fal_all_datasets.md
-│   ├── phase4_cde_all_datasets.md
-│   ├── phase5_ablation_all_datasets.md
-│   └── paper_tables_v3_final.md       ← ✅ USE THIS FOR IEEE TIFS SUBMISSION
-│
-└── differential_privacy_accounting.md ← DP guarantee, σ comparison, paper text
-```
+## File Map
 
-## Which Tables to Use for the Paper
-
-| Paper Table | Source File | Notes |
+| File | Experiment | Paper Table/Figure |
 |---|---|---|
-| Table II (AIF) | `v3_all5_datasets/paper_tables_v3_final.md` | Best model per dataset |
-| Table III (FAL) | `v3_all5_datasets/paper_tables_v3_final.md` | All 5 datasets |
-| Table IV (CDE) | `v3_all5_datasets/paper_tables_v3_final.md` | KDDCup99-SF excluded |
-| Table V (Ablation) | `v3_all5_datasets/paper_tables_v3_final.md` | KDDCup99-SF excluded |
-| DP Section 5.3 | `differential_privacy_accounting.md` | σ=2.0, ε=13.78 |
+| `exp1_network_utility.csv` | EXP 1 — Utility Preservation | Table: tab:utility |
+| `exp3_fal_convergence.csv` | EXP 3 — FAL Convergence | Figure: fig:convergence |
+| `exp5_sota_comparison.csv` | EXP 5 — SOTA Comparison | Table: tab:sota |
+| `exp6_forward_ablation.csv` | EXP 6 — Forward Ablation | Figure: fig:ablation |
+| `exp7_efficiency.csv` | EXP 7 — Efficiency | Table: tab:efficiency |
+| `exp8_btt_dual_adversary.csv` | EXP 8 — BTT Robustness | Table: tab:btt |
+| `exp9_privacy_utility.csv` | EXP 9 — Privacy-Utility Tradeoff | Table: tab:tradeoff + Figure: fig:tradeoff |
 
-## Key Exclusions (Documented)
-
-| Dataset | Excluded From | Reason |
-|---|---|---|
-| KDDCup99-SF | Table IV (CDE) | Degenerate: both models frozen at F1=0.9450 across all 15 rounds |
-| KDDCup99-SF | Table V (Ablation) | Ceiling effect: Legacy already at F1=0.9471, zero improvement headroom |
-
-## Headline Results
-
-- **CDE Resilience (UNSW-NB15):** Sentinel F1=0.8584 vs Legacy F1=0.7665 → **advantage +0.0919**
-- **CDE Resilience (CICIDS2017):** Sentinel F1=0.9199 vs Legacy F1=0.9002 → **advantage +0.0198**
-- **Ablation (UNSW-NB15):** Full pipeline +0.0805 over legacy IDS
-- **DP Guarantee:** (13.7792, 1×10⁻⁵)-DP | σ=2.0 | 10 rounds | 10 nodes
-- **PBI Consistency:** 9/10 archetypes KL_DoW < 0.3 | 10/10 KL_Rec < 0.3
+For the exact numbers in each file, see [`../RESULTS.md`](../RESULTS.md).
