@@ -3,7 +3,7 @@
 **A Federated Behavioral Intelligence Framework for Privacy-Preserving Anomaly Detection in Distributed Networks**
 
 > Submitted to IEEE Transactions on Dependable and Secure Computing (TDSC), 2026
-> Author: Md. Hamid Borkot Tulla — Université de Bourgogne, Dijon, France
+> Author: Md. Hamid Borkot Tulla —
 
 ---
 
