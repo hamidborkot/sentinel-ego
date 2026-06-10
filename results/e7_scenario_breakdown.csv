@@ -1,0 +1,16 @@
+dataset,scenario,n_samples,n_malicious,f1
+CERT_r4.2,S1_USB_exfil,892,89,0.9121
+CERT_r4.2,S2_Email_exfil,743,68,0.8834
+CERT_r4.2,S3_After_hours,1204,112,0.8612
+CERT_r4.2,S4_Risky_web,401,31,0.7943
+CERT_r4.2,S5_General,4471,201,0.8531
+CERT_r6.2,S1_USB_exfil,1243,127,0.9053
+CERT_r6.2,S2_Email_exfil,1087,98,0.8791
+CERT_r6.2,S3_After_hours,1841,167,0.8549
+CERT_r6.2,S4_Risky_web,623,47,0.7812
+CERT_r6.2,S5_General,6823,312,0.852
+CERT_r5.2,S1_USB_exfil,734,71,0.8412
+CERT_r5.2,S2_Email_exfil,612,54,0.8103
+CERT_r5.2,S3_After_hours,1102,89,0.7834
+CERT_r5.2,S4_Risky_web,287,22,0.7201
+CERT_r5.2,S5_General,3891,178,0.7317

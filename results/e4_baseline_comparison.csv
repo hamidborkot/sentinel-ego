@@ -1,0 +1,7 @@
+Method,F1,AUC,DP_Protected,Dataset,Setting
+Yuan 2019 (LAN-IDS),0.7853,0.8421,No,CERT r4.2,Centralised
+LAN-Based DL (2021),0.8124,0.8799,No,CERT r4.2,Centralised
+FedAT (2022),0.8211,0.9102,No,CERT r4.2,Federated
+Ye 2025 (DeepInsight-FL),0.9972,0.9989,No,CERT r4.2,Federated (no DP)
+Centralised-GBT (ours),0.8703,0.9714,No,CERT r4.2,Centralised (no DP)
+SENTINEL-EGO (ours epsilon-DP),0.8531,0.9601,"Yes (epsilon=1.40, delta=1e-5)",CERT r4.2,Federated+DP
