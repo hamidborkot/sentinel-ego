@@ -45,14 +45,6 @@
 | Fig 4 | `fig:convergence` | Done |
 | Fig 5 | `fig:tradeoff` | **NEEDS CREATION** |
 
-### Style Compliance
-- [ ] No em dashes in prose (search for ` --- ` and ` -- ` in flowing text)
-- [ ] All claims quantitative with \cite{}
-- [ ] Bibitem duplicates resolved
-- [ ] All figures use `[!t]` placement
-- [ ] Bold the SENTINEL-EGO row in every comparison table
-- [ ] Operational config row bold in tab:tradeoff
-
 ---
 
 ## Page Management
