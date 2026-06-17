@@ -24,7 +24,10 @@ def download_enron(raw_dir: str) -> str:
     tar_path = os.path.join(raw_dir, "enron_mail_20150507.tar.gz")
     if not os.path.exists(tar_path):
         print(f"Downloading Enron corpus from {ENRON_URL} ...")
-        urllib.request.urlretrieve(ENRON_URL, tar_path)
+        # Validate URL scheme to prevent potential exploits
+        if not ENRON_URL.startswith(('http://', 'https://')):
+            raise ValueError("Invalid URL scheme")
+        urllib.request.urlretrieve(ENRON_URL, tar_path)  # nosec B310 - hardcoded HTTPS URL is safe
         size_mb = os.path.getsize(tar_path) / 1024 / 1024
         print(f"Downloaded: {size_mb:.2f} MB")
     return tar_path
@@ -36,9 +39,11 @@ def extract_enron(tar_path: str, extract_dir: str) -> str:
     if not os.listdir(extract_dir):
         print("Extracting archive...")
         with tarfile.open(tar_path, "r:gz") as tar:
-            tar.extractall(path=extract_dir)
+            # Use filter='data' to prevent path traversal vulnerabilities (CVE-2007-4559)
+            tar.extractall(path=extract_dir, filter="data")
     maildir = find_maildir(extract_dir)
-    assert maildir is not None, "maildir not found after extraction"
+    if maildir is None:
+        raise ValueError("maildir not found after extraction")
     print(f"MAILDIR: {maildir}")
     return maildir
 
