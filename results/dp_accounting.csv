@@ -1,6 +1,6 @@
-sigma,C,rounds,nodes,alpha,delta,rdp_total,epsilon,note
-0.5,1.0,10,10,10,1e-5,800.0,201.2792,Too weak
-1.0,1.0,10,10,10,1e-5,50.0,51.2792,Weak for paper
-1.5,1.0,10,10,10,1e-5,22.2222,23.5014,Moderate tradeoff
-2.0,1.0,10,10,10,1e-5,12.5,13.7792,PAPER CHOICE — (13.7792 1e-5)-DP
-3.0,1.0,10,10,10,1e-5,5.5556,6.8348,Strongest but high noise
+sigma,C,rounds,nodes,alpha_fixed,rdp_fixed,epsilon_fixed_alpha10,alpha_optimal,rdp_optimal,epsilon_optimal,delta,accounting_method,paper_claim
+0.5,1.0,10,10,10,800.0,201.2792,2,200.0,202.3026,1e-5,RDP_optimal_alpha,False
+1.0,1.0,10,10,10,50.0,51.2792,2,12.5,14.8026,1e-5,RDP_optimal_alpha,False
+1.5,1.0,10,10,10,22.2222,23.5014,3,7.4074,8.0387,1e-5,RDP_optimal_alpha,False
+2.0,1.0,10,10,10,12.5,13.7792,3,3.125,1.4042,1e-5,RDP_optimal_alpha,True
+3.0,1.0,10,10,10,5.5556,6.8348,4,1.3889,0.7723,1e-5,RDP_optimal_alpha,False

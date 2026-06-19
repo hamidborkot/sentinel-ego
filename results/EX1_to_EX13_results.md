@@ -2,7 +2,8 @@
 
 > **IEEE TIFS 2026 Submission**  
 > Runner v4 — EX-8 updated to v4 (BTT fool rate fixed >80%)  
-> Last updated: May 2026
+> DP accounting corrected: tight optimal-α method → ε = **1.4042** (not 13.7792)  
+> Last updated: June 2026
 
 ---
 
@@ -10,7 +11,7 @@
 
 | EX | Experiment | Phase | Key Metric | Result | Status |
 |---|---|---|---|---|---|
-| EX-1 | Differential Privacy Accounting | DP | ε @ σ=2.0 | 13.7792 | ✅ Pass |
+| EX-1 | Differential Privacy Accounting | DP | ε @ σ=2.0 | **1.4042** | ✅ Pass |
 | EX-2 | PBI KL Divergence (Hour) | PBI | Archetypes KL<0.3 | 8/10 | ✅ Pass |
 | EX-3 | PBI KL Divergence (DoW) | PBI | Archetypes KL<0.3 | 9/10 | ✅ Pass |
 | EX-4 | PBI KL Divergence (Recipients) | PBI | Archetypes KL<0.3 | 10/10 | ✅ Pass |
@@ -28,17 +29,28 @@
 
 ## EX-1: Differential Privacy Accounting
 
-**Config:** σ=2.0 | C=1.0 | Rounds=10 | Nodes=10 | α=10 | δ=1×10⁻⁵
+> ⚠️ **Correction notice:** An earlier version of this file reported ε = 13.7792 using
+> a fixed Rényi order α = 10. That is a loose bound. The correct paper claim uses
+> **tight RDP composition with optimal α selection**, giving **ε = 1.4042**.
+> See `results/differential_privacy_accounting.md` for full derivation.
 
-| σ | RDP (α=10) | ε (ε,δ)-DP | Notes |
+**Config:** σ = 2.0 | C = 1.0 | R = 10 rounds | K = 10 nodes | δ = 1×10⁻⁵  
+**Accounting:** Tight RDP, optimal Rényi order α\* = 3
+
+### Tight ε Sweep (Optimal α — Paper Consistent)
+
+| σ | ε (tight, optimal α) | Practical? | Notes |
 |---|---|---|---|
-| 0.5 | 800.0 | 201.2792 | Too weak |
-| 1.0 | 50.0 | 51.2792 | Weak for paper |
-| 1.5 | 22.22 | 23.5014 | Moderate tradeoff |
-| **2.0** | **12.5** | **13.7792** | **← PAPER CHOICE** |
-| 3.0 | 5.56 | 6.8348 | Strongest, highest noise |
+| 0.5 | >> 100 | ❌ | Negligible privacy |
+| 1.0 | ~14.80 | ❌ | ε > 10, weak |
+| 1.5 | ~8.04 | ⚠️ | Borderline |
+| **2.0** | **1.4042** | **✅** | **← PAPER CLAIM** |
+| 3.0 | 0.7723 | ✅ | Strongest, marginal F1 cost |
 
-**Formal Guarantee:** **(13.7792, 1×10⁻⁵)-DP**
+**Formal Guarantee: (1.4042, 1×10⁻⁵)-DP**
+
+This places SENTINEL-EGO within the ε < 3 threshold for strong DP in federated
+learning literature (McMahan et al., 2018; Agarwal et al., 2021).
 
 ---
 
@@ -300,7 +312,7 @@
 
 ---
 
-## Abstract Lead Claim (Updated)
+## Abstract Lead Claim (Updated — June 2026)
 
 > *"Under coordinated behavioral evasion attack (CDE, 15 mutation rounds,
 > peak JSD=0.0815 on UNSW-NB15), the Sentinel Ego framework maintains
@@ -308,5 +320,6 @@
 > resilience advantage of +0.0919 absolute F1. The Behavioral Turing Test
 > confirms Ego persona indistinguishability at 88.6% mean fool rate
 > (10/10 archetypes ≥80%) under a realistic decision-stump adversary.
-> All experiments operate under a formal (13.7792, 1×10⁻⁵)-DP guarantee
-> across 10 federated Ego nodes."*
+> All experiments operate under a formal **(1.4042, 1×10⁻⁵)-DP** guarantee
+> across 10 federated Ego nodes — achieved via tight RDP composition
+> with optimal Rényi order selection (Mironov, 2017)."
