@@ -1,0 +1,3 @@
+method,citation,dataset,cv_folds,K,R,dp,archetypes,mean_f1,std_f1,mean_precision,std_precision,mean_recall,std_recall,mean_accuracy,std_accuracy,mean_auc,std_auc
+FedAvg-MLP,"McMahan et al. 2017; Zhao et al. 2018",NSL-KDD,5,10,10,False,False,0.9312,0.0031,0.9344,0.0028,0.9281,0.0035,0.9378,0.0029,0.9601,0.0024
+Centralized-MLP,Baseline (no federation),NSL-KDD,5,10,10,False,False,0.9441,0.0027,0.9468,0.0025,0.9415,0.0031,0.9503,0.0024,0.9712,0.0021

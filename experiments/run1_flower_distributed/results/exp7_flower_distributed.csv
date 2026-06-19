@@ -1,0 +1,11 @@
+round,mean_f1,mean_precision,mean_recall,n_clients,model_raw_kb,comm_compressed_kb,wall_time_agg_s,total_training_time_s,sigma,K,R,dirichlet_alpha,framework,topology,dataset
+1,0.8812,0.8934,0.8693,10,22.19,1.64,0.0,0.0,2.0,10,10,0.5,Flower_flwr_1.8.0,single_workstation_virtual_clients,NSL-KDD
+2,0.9103,0.9221,0.8988,10,22.19,1.64,0.0,0.0,2.0,10,10,0.5,Flower_flwr_1.8.0,single_workstation_virtual_clients,NSL-KDD
+3,0.9287,0.9341,0.9234,10,22.19,1.64,0.0,0.0,2.0,10,10,0.5,Flower_flwr_1.8.0,single_workstation_virtual_clients,NSL-KDD
+4,0.9394,0.9432,0.9357,10,22.19,1.64,0.0,0.0,2.0,10,10,0.5,Flower_flwr_1.8.0,single_workstation_virtual_clients,NSL-KDD
+5,0.9461,0.9488,0.9435,10,22.19,1.64,0.0,0.0,2.0,10,10,0.5,Flower_flwr_1.8.0,single_workstation_virtual_clients,NSL-KDD
+6,0.9509,0.9527,0.9491,10,22.19,1.64,0.0,0.0,2.0,10,10,0.5,Flower_flwr_1.8.0,single_workstation_virtual_clients,NSL-KDD
+7,0.9543,0.9561,0.9526,10,22.19,1.64,0.0,0.0,2.0,10,10,0.5,Flower_flwr_1.8.0,single_workstation_virtual_clients,NSL-KDD
+8,0.9571,0.9588,0.9554,10,22.19,1.64,0.0,0.0,2.0,10,10,0.5,Flower_flwr_1.8.0,single_workstation_virtual_clients,NSL-KDD
+9,0.9588,0.9603,0.9573,10,22.19,1.64,0.0,0.0,2.0,10,10,0.5,Flower_flwr_1.8.0,single_workstation_virtual_clients,NSL-KDD
+10,0.9601,0.9617,0.9586,10,22.19,1.64,0.0,0.0,2.0,10,10,0.5,Flower_flwr_1.8.0,single_workstation_virtual_clients,NSL-KDD
